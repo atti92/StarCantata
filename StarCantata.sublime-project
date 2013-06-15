@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "src"
+		},
+		{
+			"path": "irrlicht"
+		},
+		{
+			"path": "Maps"
+		},
+		{
+			"path": "pugixml"
+		},
+		{
+			"path": "Scripts"
+		}
+	]
+}
