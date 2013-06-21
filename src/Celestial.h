@@ -6,14 +6,38 @@
 using namespace video;
 //I had separate headers for each class but I think its alright this way ^^
 
+//define constants for the object loading system
+#define     _JPG    ".jpg"
+#define     _OBJ    ".obj"
+
+#define     PATH_BASE_OBJECT        "./objects"
+#define     PATH_BASE_TEXTURE       "./textures"
+#define     PATH_CELESTIAL_OBJECT   "/celestial"
+#define     PATH_CELESTIAL_TEXTURE  "/celestial"
+#define     PATH_STAR_OBJECT        "/star"
+#define     PATH_STAR_TEXTURE       "/star"
+#define     PATH_PLANET_OBJECT      "/planet"
+#define     PATH_PLANET_TEXTURE     "/planet"
+#define     PATH_MOON_OBJECT        "/moon"
+#define     PATH_MOON_TEXTURE       "/moon"
+#define     PATH_ASTEROID_OBJECT    "/asteroid"
+#define     PATH_ASTEROID_TEXTURE   "/asteroid"
+
+#define     FILE_STAR_TEXTURE       "star_"
+#define     FILE_PLANET_TEXTURE     "planet_"
+#define     FILE_MOON_TEXTURE       "moon_"
+#define     FILE_ASTEROID_TEXTURE   "asteroid_"
+
+#define     DEFAULT_CELESTIAL_OBJECT "sphere"
+
 class Celestial : public SOB
 {
 protected:
-	f32 mean_anomaly;
-	f32 s_major_a;
-	f32 eccentricity;
-	f32 foci_dist;
-	io::path obj_path;
+    f32 mean_anomaly;
+    f32 s_major_a;
+    f32 eccentricity;
+    f32 foci_dist;
+    io::path obj_path;
 	io::path texture_path;
 	io::path default_obj;
 	f32 initial_rot;

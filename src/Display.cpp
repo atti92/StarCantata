@@ -8,7 +8,7 @@ using namespace scene;
 
 Display::Display()
 {
-    device = createDevice( video::EDT_OPENGL, dimension2d<u32>(640, 480), 16, false, false, true, &receiver);
+	device = createDevice( video::EDT_OPENGL, dimension2d<u32>(800, 600), 16, false, false, true, &receiver);
 	//To-do: error reporting!
 	driver = device->getVideoDriver();
 	smgr = device->getSceneManager();

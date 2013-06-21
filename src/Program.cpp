@@ -28,7 +28,7 @@ int main()
     GUI overlayGui = GUI(user);
     user.setGUI(overlayGui);
 	XMLhandler xmlhandler;
-	xmlhandler.loadMap("Maps/testmap.xml", user);
+	xmlhandler.loadMap("maps/testmap.xml", user);
 	
     SpaceShip testship = SpaceShip(0, *display, vector3df(230,0,0));
 	display->addObject(&testship);
