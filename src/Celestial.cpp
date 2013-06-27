@@ -48,11 +48,8 @@ const f32 Celestial::eccentricAnomaly(const f32 Mean_time)  //returns the true a
 {
 	f32 e0, e1;
 	u32 cyc = 0;
-	f32 prec = 0;
 
 	e0 = Mean_time;
-	//else
-	//	e0 = PI;
 	e1 = e0 - eccentricity * sin(Mean_time) - Mean_time;
 
 	while (abs(e0 - e1) > 0.01 && (cyc < 6)) {   // 0.01 is the precision between the cycles, 6 is the max cycles
@@ -60,7 +57,6 @@ const f32 Celestial::eccentricAnomaly(const f32 Mean_time)  //returns the true a
 		e0 -= (e0 - eccentricity * sin(e0) - Mean_time) / (1 - eccentricity * cos(e0));
 		cyc++;
 	}
-	prec = abs(e0 - e1);
 	return e0;
 }
 

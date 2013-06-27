@@ -67,11 +67,12 @@ void User::keys(myEventReceiver& receiver)  // Movement
 const bool User::checkCommand(const stringc text)
 {
 	irr::core::array<stringc> args;
-	
+
 	if(text[0] == '.')
 	{
 		Command act;
 		text.split(args, " ");
+		act = COMMAND_NONE;
 		if(args[0].equals_ignore_case(".help"))
 		{
 			act = COMMAND_HELP;
@@ -84,7 +85,7 @@ const bool User::checkCommand(const stringc text)
         {
             act = COMMAND_SPAWN;
         }
-		//TODO: 
+		//TODO:
 		//more commands
         args.erase(0);
         Commands::run(act, args, this);

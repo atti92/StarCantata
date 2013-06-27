@@ -5,6 +5,7 @@
 //More Commands
 enum Command
 {
+    COMMAND_NONE = 0,
     COMMAND_HELP = 1,
     COMMAND_SPAWN
 };
