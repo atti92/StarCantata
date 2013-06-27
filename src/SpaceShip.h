@@ -37,7 +37,7 @@ public:
     f32 getMaxEnergy(){return energy;}
     f32 getMaxHp(){return hitPoints;}
     void setMaxTurnSpeed(f32 sp = 1){maxturnspeed = sp;}
-    void setMaxTravelSpeed(f32 sp = 100){maxtravelspeed = sp;}
+    void setMaxTravelSpeed(f32 sp = 200){maxtravelspeed = sp;}
     bool isThrusting(){return (movement & 0x01) > 0;}
     bool isBreaking(){return (movement & 0x02) > 0;}
     bool isTurningACW(){return (movement & 0x04) > 0;}
