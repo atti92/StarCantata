@@ -11,8 +11,8 @@ SpaceShip::SpaceShip(IAnimatedMeshSceneNode* inode)
 SpaceShip::SpaceShip(const u32 type, Display& display, const vector3df pos, const vector3df rot)
 {
     this->init();
-    const io::path ship_obj_path = "Objects/Ships/";
-    const io::path textures = "/textures/";
+    const io::path ship_obj_path = "objects/spaceship/";
+    const io::path textures = "textures/spaceship/";
 	io::path shipType[20];  // A list could be loaded from a file
 	shipType[0] = "RPG_Scythe_1.obj";   
 	//NEED TO CHANGE END

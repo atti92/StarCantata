@@ -37,7 +37,7 @@ void SOB::setRelPosition(const vector3df pos, SOB* parent)
 
 SpaceObjType SOB::strtoSOBT(stringc arg)
 {
-    if(arg.equals_ignore_case("sun"))
+    if(arg.equals_ignore_case("star"))
         return SOB_SUN;
     if(arg.equals_ignore_case("spaceship") || arg.equals_ignore_case("ship"))
         return SOB_SPACESHIP;
