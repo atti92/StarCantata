@@ -31,3 +31,5 @@ StarCantata
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+dependencies/irrlicht/lib/
+StarCantata.layout
