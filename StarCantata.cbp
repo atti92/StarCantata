@@ -21,6 +21,7 @@
 					<Add library="glu32" />
 					<Add library="gdi32" />
 					<Add directory="irrlicht/Win-32/" />
+					<Add directory="dependencies/irrlicht/lib/Win32-gcc" />
 				</Linker>
 			</Target>
 			<Target title="Linux-Debug">
@@ -30,16 +31,21 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-g" />
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-std=c++11" />
 				</Compiler>
 				<Linker>
-					<Add library="GL" />
-					<Add library="GLU" />
-					<Add library="Xxf86vm" />
-					<Add library="Xext" />
-					<Add library="X11" />
-					<Add directory="irrlicht/Linux-32/" />
-					<Add directory="/usr/X11R6/lib$(LIBSELECT)" />
+					<Add option="-s" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="gdi32" />
+					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="gdi32" />
+					<Add directory="dependencies/irrlicht/lib/Win32-gcc" />
 				</Linker>
 			</Target>
 			<Target title="Win-Release">
@@ -60,7 +66,7 @@
 					<Add library="opengl32" />
 					<Add library="glu32" />
 					<Add library="gdi32" />
-					<Add directory="irrlicht/Win-32/" />
+					<Add directory="dependencies/irrlicht/lib/Win32-gcc" />
 				</Linker>
 			</Target>
 			<Target title="Linux-Release">

@@ -1,0 +1,24 @@
+Currently working on
+--------------------------------------------------------
+Ati:
+Bobbo:
+Sybir:
+
+
+--------------------------------------------------------
+TODO:
+-Add some more commands, that could be used for later map making
+-Better user input handler + mouse input
+-Implement Map Save  (to xml or different map files)
+-Implement Game Save (i prefer MySql Database for later networking possibilities)
+-Implement Game Load
+-UI work
+-Cleanup the core for simplicity and readability
+-More Models + textures
+-Storyline
+-Combat mechanics
+-Artificial Intelligence (or Stupidity)
+-Implement a scripting model(not hardcoded) for AI  [i have ideas]
+-Graphics stuff (shaders...)
+-Networking?
+
