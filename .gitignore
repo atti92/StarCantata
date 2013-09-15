@@ -18,6 +18,7 @@ StarCantata
 *.ncb
 *.suo
 *.tlb
+*.layout
 *.tlh
 *.bak
 *.cache
