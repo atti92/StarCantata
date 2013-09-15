@@ -20,7 +20,7 @@ LDFLAGS += -lrt
 endif
 
 
-IRRLICHT_LIB = -Lirrlicht/Linux-$(LIBSELECT) -lIrrlicht
+IRRLICHT_LIB = -Ldependencies/irrlicht/lib/Linux-$(LIBSELECT) -lIrrlicht
 
 # Name of the executable created (.exe will be added automatically if necessary)
 Target := StarCantata
@@ -45,7 +45,7 @@ USERLDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
 #no changes necessary below this line
 ####
 
-CPPFLAGS = -Iirrlicht -Isrc -Ipugixml -I/usr/X11R6/include $(USERCPPFLAGS)
+CPPFLAGS = -Idependencies/irrlicht/include -Isrc -Ipugixml -I/usr/X11R6/include $(USERCPPFLAGS)
 CXXFLAGS = $(USERCXXFLAGS)
 LDFLAGS = $(USERLDFLAGS) $(IRRLICHT_LIB)
 
