@@ -87,7 +87,6 @@ Planet::Planet(const u32 type, Display& display, const f32 scale, const vector3d
     io::path Obj_name = FILE_PLANET_TEXTURE;
 	Obj_name += type;
     scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );
-
 }
 
 Moon::Moon():Celestial(){}

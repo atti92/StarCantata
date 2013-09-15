@@ -1,8 +1,16 @@
 #include "XMLhandler.h"
+#include <iostream>
 
 void XMLhandler::loadMap(const char* path, User &user)
 {
 	result = doc.load_file(path);
+    irr::ILogger* logger = user.display().Device ()->getLogger ();
+    if(!result)
+    {
+        logger->log("Failed to load Map file!", ELL_ERROR);
+        return;
+    }
+    logger->log("Loaded Map file!", ELL_INFORMATION);
 	pugi::xml_node solsys = doc.child("solsys");
 	addChild(0, solsys, user);
 
