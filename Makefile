@@ -2,33 +2,44 @@
 # It's usually sufficient to change just the target name and source file list
 # and be sure that CXX is set to a valid compiler
 
+#os name, for some reason
+OS := $(shell uname)
+ARCH := $(shell uname -m)
+
+ifeq ($(OS), Linux)
+  ifeq ($(ARCH), x86_64)
+	LIBSELECT=64
+  else
+    LIBSELECT=32
+  endif
+endif
+
+#solaris real-time features
+ifeq ($(HOSTTYPE), sun4)
+LDFLAGS += -lrt
+endif
+
+
+IRRLICHT_LIB = -Lirrlicht/Linux-$(LIBSELECT) -lIrrlicht
+
 # Name of the executable created (.exe will be added automatically if necessary)
 Target := StarCantata
-# List of source files, separated by spaces
-Sources := src/XMLhandler.cpp \
-		src/User.cpp \
-		src/SOB.cpp \
-		src/Program.cpp \
-		src/Gui.cpp \
-		src/Display.cpp \
-		src/Controls.cpp \
-		src/Commands.cpp \
-		src/Celestial.cpp \
-		pugixml/pugixml.cpp \
-		src/Camera.cpp \
-		src/SpaceShip.cpp 
 
 # Path for the executable. Note that Irrlicht.dll should usually also be there for win32 systems
-BinPath = ./
+BinPath = .
+
+# target specific settings
+# name of the binary - only valid for targets which set SYSTEM
+DESTPATH = $(BinPath)/$(Target)
+
 
 # general compiler settings (might need to be set when compiling the lib, too)
 # preprocessor flags, e.g. defines and include paths
-USERCPPFLAGS = 
+USERCPPFLAGS =
 # compiler flags such as optimization flags
-USERCXXFLAGS = -O3 -ffast-math
-#USERCXXFLAGS = -g -Wall
+USERCXXFLAGS = -ggdb -Wall
 # linker flags such as additional libraries and link paths
-USERLDFLAGS =
+USERLDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
 
 ####
 #no changes necessary below this line
@@ -36,41 +47,32 @@ USERLDFLAGS =
 
 CPPFLAGS = -Iirrlicht -Isrc -Ipugixml -I/usr/X11R6/include $(USERCPPFLAGS)
 CXXFLAGS = $(USERCXXFLAGS)
-LDFLAGS = $(USERLDFLAGS)
+LDFLAGS = $(USERLDFLAGS) $(IRRLICHT_LIB)
+
+# List of source files, separated by spaces
+SRCD = src
+XMLD = pugixml
+
+$(SRCD)%.o : $(SRCD)%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ $(LDFLAGS)
+
+$(XMLD)%.o : $(XMLD)%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ $(LDFLAGS)
+
+%.o : %.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ $(LDFLAGS)
+
+include make.objects
 
 #default target is Linux
-all: all_linux
+all: $(SRC) $(XML)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(SRC) $(XML) -o $(DESTPATH) $(LDFLAGS)
 
-# target specific settings
-all_linux all_win32 static_win32: LDFLAGS += -Lirrlicht/$(SYSTEM) -lIrrlicht
-all_linux: LDFLAGS += -L/usr/X11R6/lib$(LIBSELECT) -lGL -lXxf86vm -lXext -lX11 -lXcursor
-all_linux clean_linux: SYSTEM=Linux-32
-all_win32 clean_win32 static_win32: SYSTEM=Win-32
-all_win32 clean_win32 static_win32: SUF=.exe
-static_win32: CPPFLAGS += -D_IRR_STATIC_LIB_
-all_win32: LDFLAGS += -lopengl32 -lm
-static_win32: LDFLAGS += -lgdi32 -lwinspool -lcomdlg32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lopengl32
-# name of the binary - only valid for targets which set SYSTEM
-DESTPATH = $(BinPath)/$(Target)$(SUF)
+.cpp.o:
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ $(LDFLAGS)
 
-all_linux all_win32 static_win32:
-	$(warning Building...)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(Sources) -o $(DESTPATH) $(LDFLAGS)
+.PHONY: clean
 
-clean: clean_linux clean_win32
-	$(warning Cleaning...)
-
-clean_linux clean_win32:
-	@$(RM) $(DESTPATH)
-
-.PHONY: all all_win32 static_win32 clean clean_linux clean_win32
-
-#multilib handling
-ifeq ($(HOSTTYPE), x86_64)
-LIBSELECT=64
-endif
-#solaris real-time features
-ifeq ($(HOSTTYPE), sun4)
-LDFLAGS += -lrt
-endif
-
+clean:
+	rm -f $(SRCD)/*.o
+	rm -f $(XMLD)/*.o

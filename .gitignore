@@ -3,7 +3,10 @@ obj/
 *.user
 #ignore thumbnails created by windows
 Thumbs.db
-#Ignore files build by Visual Studio
+#ignore linux binary
+StarCantata
+#Ignore files built by compilers
+*.o
 *.obj
 *.exe
 *.pdb

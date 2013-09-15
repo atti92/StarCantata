@@ -1,0 +1,13 @@
+SRC = $(SRCD)/XMLhandler.o \
+		$(SRCD)/User.o \
+		$(SRCD)/SOB.o \
+		$(SRCD)/Program.o \
+		$(SRCD)/Gui.o \
+		$(SRCD)/Display.o \
+		$(SRCD)/Controls.o \
+		$(SRCD)/Commands.o \
+		$(SRCD)/Celestial.o \
+		$(SRCD)/Camera.o \
+		$(SRCD)/SpaceShip.o 
+
+XML = $(XMLD)/pugixml.o
