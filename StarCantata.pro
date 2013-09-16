@@ -212,7 +212,9 @@ HEADERS += \
     pugixml/pugixml.hpp \
     pugixml/pugiconfig.hpp \
     src/Camera.h \
-    src/SpaceShip.h
+    src/SpaceShip.h \
+    src/Irrlicht_Core.h \
+    src/Irrlicht_GFX.h
 
 
 win32: LIBS += -L$$PWD/dependencies/irrlicht/lib/Win32-gcc/ -lIrrlicht \
