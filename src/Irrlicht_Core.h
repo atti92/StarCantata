@@ -16,16 +16,16 @@ class Irrlicht_Core
 {
 private:
     bool fullscreen;
-    E_DRIVER_TYPE VideoMode;
+    irr::videoE_DRIVER_TYPE VideoMode;
 
 public:
     Irrlicht_Core();
     void init_Irrlicht();
     void GFX_Irrlicht();
     IrrlichtDevice *device;
-    IVideoDriver *driver;
-    ISceneManager *scenemgr;
-    IGUIEnvironment *guienv;
+    irr:video::IVideoDriver *driver;
+    irr::scene::ISceneManager *scenemgr;
+    irr:gui::IGUIEnvironment *guienv;
 
 };
 
