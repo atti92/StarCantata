@@ -235,3 +235,6 @@ else:unix: DEPENDPATH += $$PWD/dependencies/irrlicht/lib/Linux/   \
 
 win32: PRE_TARGETDEPS += $$PWD/dependencies/irrlicht/lib/Win32-gcc/libIrrlicht.a
 else:unix: PRE_TARGETDEPS += $$PWD/dependencies/irrlicht/lib/Linux/libIrrlicht.a
+
+OTHER_FILES += \
+    TODO
