@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include "irrlicht.h"
+#include "SpaceObject.h"
 
 enum CameraConsts
 {
@@ -10,22 +11,24 @@ enum CameraConsts
 };
 
 class Camera{
-    irr::f32 cameraDistance;
-    irr::f32 cameraRotation;
-    irr::f32 cameraYRotation;
+    irr::scene::IAnimatedMeshSceneNode *cameraTarget_;
+    int minCameraDistance_, maxCameraDistance_;
+    irr::core::vector3df cameraPosition_, cameraOrientation_;
 public:
     Camera();
-    irr::f32 getCameraDistance() const;
-    void setCameraDistance(const irr::f32 &value);
-    irr::f32 getCameraRotation() const;
-    void setCameraRotation(const irr::f32 &value);
-    irr::f32 getCameraYRotation() const;
-    void setCameraYRotation(const irr::f32 &value);
-    static irr::f32 getMinCameraDistance();
-    static irr::f32 getMaxCameraDistance();
-    void moveCameraZ(const irr::f32 d = 0);
-    void rotCameraY(const irr::f32 d = 0);
-    void rotCameraZ(const irr::f32 d = 0);
+    void attach(SpaceObject* object);
+    void attach(GUID guid);
+    void detach();
+    void setDistance(int distance);
+    int getDistance();
+    void setPosition(irr::core::vector3df position);
+    irr::core::vector3df getPosition();
+    void setOrientation(irr::core::vector3df orientation);
+    irr::core::vector3df getOrientation();
+    void setMaxDistance(int dist);
+    int getMaxDistance();
+    void setMinDistance(int dist);
+    int getMinDistance();
 };
 
 #endif // CAMERA_H

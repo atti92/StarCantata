@@ -1,7 +1,7 @@
 #ifndef Celestial_H
 #define Celestial_H
 
-#include "SOB.h"
+#include "SpaceObject.h"
 #include "Display.h"
 using namespace video;
 //I had separate headers for each class but I think its alright this way ^^
@@ -30,7 +30,7 @@ using namespace video;
 
 #define     DEFAULT_CELESTIAL_OBJECT "sphere"
 
-class Celestial : public SOB
+class Celestial : public SpaceObject
 {
 protected:
     f32 mean_anomaly;

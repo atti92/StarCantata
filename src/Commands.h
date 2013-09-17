@@ -5,9 +5,17 @@
 //More Commands
 enum Command
 {
-    COMMAND_NONE = 0,
-    COMMAND_HELP = 1,
-    COMMAND_SPAWN
+    COMMAND_NONE    = 0,
+    COMMAND_HELP    = 1,
+    COMMAND_SPAWN   = 3
+};
+
+enum CommandType
+{
+    NONE_COMMAND        = 0,
+    USER_COMMAND        = 1,
+    MODERATOR_COMMAND   = 2,
+    ADMIN_ONLY_COMMAND  = 3
 };
 
 class Commands

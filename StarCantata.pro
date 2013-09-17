@@ -20,7 +20,6 @@ SOURCES += \
 HEADERS += \
     src/XMLhandler.h \
     src/User.h \
-    src/SOB.h \
     src/MapLoader.h \
     src/Gui.h \
     src/Display.h \
@@ -213,8 +212,12 @@ HEADERS += \
     pugixml/pugiconfig.hpp \
     src/Camera.h \
     src/SpaceShip.h \
-    src/Irrlicht_Core.h \
-    src/Irrlicht_GFX.h
+    src/IrrlichtCore.h \
+    src/GUID.h \
+    src/Map.h \
+    src/IrrlichtGfx.h \
+    src/SpaceObject.h \
+    src/Object.h
 
 
 win32: LIBS += -L$$PWD/dependencies/irrlicht/lib/Win32-gcc/ -lIrrlicht \
