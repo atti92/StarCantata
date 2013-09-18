@@ -25,9 +25,9 @@ public:
     irr::core::vector3df getPosition();
     void setOrientation(irr::core::vector3df orientation);
     irr::core::vector3df getOrientation();
-    void setMaxDistance(int dist);
+    void setMaxDistance(int maxDistance);
     int getMaxDistance();
-    void setMinDistance(int dist);
+    void setMinDistance(int minDistance);
     int getMinDistance();
 };
 

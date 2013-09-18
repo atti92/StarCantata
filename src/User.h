@@ -8,7 +8,7 @@
 #include <string>
 
 class GUI;
-
+//DEPRECATED
 class User
 {
 protected:

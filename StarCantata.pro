@@ -217,7 +217,9 @@ HEADERS += \
     src/Map.h \
     src/IrrlichtGfx.h \
     src/SpaceObject.h \
-    src/Object.h
+    src/Object.h \
+    src/GuidGenerator.h \
+    src/Globals.h
 
 
 win32: LIBS += -L$$PWD/dependencies/irrlicht/lib/Win32-gcc/ -lIrrlicht \

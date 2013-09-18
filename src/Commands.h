@@ -3,7 +3,7 @@
 
 //TODO:
 //More Commands
-enum Command
+enum CommandName
 {
     COMMAND_NONE    = 0,
     COMMAND_HELP    = 1,
@@ -18,7 +18,7 @@ enum CommandType
     ADMIN_ONLY_COMMAND  = 3
 };
 
-class Commands
+class Command
 {
 public:
     static bool run(Command com, const irr::core::array<irr::core::stringc> args, User *user = 0);

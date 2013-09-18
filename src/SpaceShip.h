@@ -1,7 +1,7 @@
 #ifndef Ship_H
 #define Ship_H
 
-#include "SOB.h"		//inherited from Space object
+#include "SpaceObject.h"		//inherited from Space object
 #include "Display.h"
 
 enum Direction {
@@ -12,15 +12,15 @@ enum Direction {
     DIR_ANTI_CLOCKWISE
 };
 
-class SpaceShip : public SOB
+class SpaceShip : public SpaceObject
 {
 protected:
-    f32 hitPoints;
-    f32 energy;
-    f32 maxhitPoints;
-    f32 maxenergy;
-    f32 maxturnspeed;
-    f32 maxtravelspeed;
+    f32 hitPoints_;
+    f32 energy_;
+    f32 maxhitPoints_;
+    f32 maxenergy_;
+    f32 maxTurnSpeed_;
+    f32 maxTravelSpeed_;
     u8 movement;
 public:
     SpaceShip(IAnimatedMeshSceneNode* inode = 0); //example: Ship testship = someIsceneNodepointerobject; or Ship testship = Ship(someiscenenodeobj);
@@ -32,20 +32,20 @@ public:
     f32 getModdedThrustValue();
     f32 getRealThrustValue();   //used in movement
     f32 getRealBreakValue();
-    f32 getCurrentEnergy(){return energy;}
-    f32 getCurrentHp(){return hitPoints;}
-    f32 getMaxEnergy(){return energy;}
-    f32 getMaxHp(){return hitPoints;}
-    void setMaxTurnSpeed(f32 sp = 1){maxturnspeed = sp;}
-    void setMaxTravelSpeed(f32 sp = 200){maxtravelspeed = sp;}
-    bool isThrusting(){return (movement & 0x01) > 0;}
-    bool isBreaking(){return (movement & 0x02) > 0;}
-    bool isTurningACW(){return (movement & 0x04) > 0;}
-    bool isTurningCW(){return (movement & 0x08) > 0;}
-    void Thrust(Direction dir);
-    void Turn(Direction dir);
-    void MoveBy(vector3df speedvector);
-    void refresh(const f32 frameTime, const u32 time);
+    f32 getCurrentEnergy();
+    f32 getCurrentHp();
+    f32 getMaxEnergy();
+    f32 getMaxHp();
+    void setMaxTurnSpeed(f32 sp = 1);
+    void setMaxTravelSpeed(f32 sp = 200);
+    bool isThrusting();
+    bool isBreaking();
+    bool isTurningACW();
+    bool isTurningCW();
+    void thrust(Direction dir);
+    void turn(Direction dir);
+    void moveBy(vector3df speedvector);
+    void control(const f32 frameTime, const u32 time);
 };
 
 #endif

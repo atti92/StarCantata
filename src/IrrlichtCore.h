@@ -11,23 +11,23 @@
 class IrrlichtCore
 {
 private:
-    bool isFullScreen_;
-    irr::video::E_DRIVER_TYPE videoMode_;
+    static bool isFullScreen_;
+    static irr::video::E_DRIVER_TYPE videoMode_;
 protected:
-    irr::IrrlichtDevice* device_;
-    irr::video::IVideoDriver* driver_;
-    irr::scene::ISceneManager* scenemgr_;
-    irr::gui::IGUIEnvironment* guienv_;
-    myEventReceiver receiver_;
+    static irr::IrrlichtDevice* device_;
+    static irr::video::IVideoDriver* driver_;
+    static irr::scene::ISceneManager* scenemgr_;
+    static irr::gui::IGUIEnvironment* guienv_;
+    static myEventReceiver receiver_;
 public:
     IrrlichtCore();
-    void initIrrlicht();
+    static void initIrrlicht();
     void irrlichtGfx();
-    myEventReceiver& getEventReceiver();
-    irr::IrrlichtDevice* getDevice();
-    irr:video::IVideoDriver* getDriver();
-    irr::scene::ISceneManager* getSceneManager();
-    irr::gui::IGUIEnvironment* getGuiEnvironment();
+    static myEventReceiver& getEventReceiver();
+    static irr::IrrlichtDevice* getDevice();
+    static irr:video::IVideoDriver* getDriver();
+    static irr::scene::ISceneManager* getSceneManager();
+    static irr::gui::IGUIEnvironment* getGuiEnvironment();
 
 };
 

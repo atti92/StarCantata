@@ -1,6 +1,7 @@
 #include "XMLhandler.h"
 #include "time.h"
 #include "Gui.h"
+#include "Globals.h"
 #include <iostream>
 #include <fstream>
 

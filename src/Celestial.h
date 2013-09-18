@@ -30,29 +30,28 @@ using namespace video;
 
 #define     DEFAULT_CELESTIAL_OBJECT "sphere"
 
-class Celestial : public SpaceObject
+class CelestialObject : public SpaceObject
 {
 protected:
-    f32 mean_anomaly;
-    f32 s_major_a;
-    f32 eccentricity;
-    f32 foci_dist;
-    io::path obj_path;
-	io::path texture_path;
-	io::path default_obj;
-	f32 initial_rot;
-	bool orbiting;
+    f32 meanAnomaly_;
+    f32 semiMajorAxis_;
+    f32 eccentricity_;
+    f32 fociDistance_;
+    io::path meshPath_;
+    io::path texturePath_;
+    io::path defaultMesh_;
+    f32 initialOrientation_;
+    bool isOrbiting_;
 public:
 	Celestial();
 	Celestial(IAnimatedMeshSceneNode* inode);
 	Celestial(Display& display, const f32 scale, const vector3df pos, const vector3df rot, bool lighting = true);
-	void setOrbit(SOB *parent, const f32 s_major_a, const f32 foci_dist, const f32 initial_rot = 0);
-	virtual void refresh(const f32 frameTime, const u32 time);
-	const f32 eccentricAnomaly(const f32 Mean_time);  //returns the true angle from the circle angle
-	virtual void move(const f32 frameTime, const u32 time);
+    void setOrbit(SpaceObject *parent, const f32 semiMajorAxis, const f32 fociDistance, const f32 initialOrientation = 0);
+    virtual void control(const f32 frameTime, const u32 time);
+    const f32 eccentricAnomaly(const f32 meanTime);  //returns the true angle from the circle angle
 };
 
-class Planet : public Celestial
+class Planet : public CelestialObject
 {
 public:
 	Planet();
@@ -61,7 +60,7 @@ public:
     static f32 getDefaultScale(){ return 15; }
 };
 
-class Moon : public Celestial
+class Moon : public CelestialObject
 {
 public:
 	Moon();
@@ -70,7 +69,7 @@ public:
     static f32 getDefaultScale(){ return 5; }
 };
 
-class Asteroid : public Celestial
+class Asteroid : public CelestialObject
 {
 public:
 	Asteroid();
@@ -79,15 +78,15 @@ public:
     static f32 getDefaultScale(){ return 1; }
 };
 
-class Sun : public Celestial
+class Sun : public CelestialObject
 {
 protected:
-	double lightrange;
-	SColorf lightcolor;
+    double lightRange_;
+    SColorf lightColor_;
 public:
 	Sun();
 	Sun(IAnimatedMeshSceneNode* inode);
-	Sun(u32 type, Display& display, f32 scale = 20, vector3df pos = vector3df(0, 0, 0), vector3df rot = vector3df(0,0,0), SColorf lightcolor = SColorf(1.f,0.f,0.f), f32 lightrange = 1000);
+    Sun(u32 type, Display& display, f32 scale = 20, vector3df pos = vector3df(0, 0, 0), vector3df rot = vector3df(0,0,0), SColorf lightColor = SColorf(1.f,0.f,0.f), f32 lightRange = 1000);
     static f32 getDefaultScale(){ return 30; }
 };
 #endif

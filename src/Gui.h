@@ -8,17 +8,14 @@ enum GUIElementId{
     GUI_CHAT_EDITBOX = 1386
 };
 
-class User;
 class GUI
 {
 private:
-	User* user;
+    irr::core::array<irr::gui::IGUIElement*> guiElement_;
 public:
-	irr::gui::IGUIEnvironment* env;
-	GUI();
-	GUI(User& user);
+    GUI();
 	void createChatWindow();
-    GUIElementId getFocusElementId();
+    irr::gui::IGUIElement* getFocusElement();
 };
 
 #endif

@@ -6,15 +6,15 @@
 using namespace irr;
 
 //Recording Events
-class myEventReceiver : public IEventReceiver
+class MyEventReceiver : public IEventReceiver
 {
 private:
-	bool KeyIsDown[KEY_KEY_CODES_COUNT];
+    bool isKeyDown_[KEY_KEY_CODES_COUNT];
 public:
-	virtual bool OnEvent(const SEvent& event);
-    virtual bool IsKeyDown(EKEY_CODE keycode) const;
+    virtual bool OnEvent (const SEvent& event);
+    virtual bool isKeyDown(EKEY_CODE keycode) const;
 	void changeKey(EKEY_CODE keycode);
-	myEventReceiver();
+    MyEventReceiver();
 };
 
 #endif

@@ -9,7 +9,7 @@ using namespace irr;
 using namespace core;
 using namespace scene;
 
-enum SpaceObjectType
+enum SpaceObjectType  //not used
 {
     SOB_NONE        = 0,
     SOB_SPACESHIP   = 1,
@@ -58,8 +58,7 @@ public:
     void setRotationSpeedAbs(irr::f32 speedValue);
 
     void turn(irr::f32 radian);
-    virtual void move(const irr::f32 frameTime, const irr::u32 time);
-    virtual void refresh(const irr::f32 frameTime, const irr::u32 time);
+    virtual void control(const irr::f32 frameTime, const irr::u32 time);
     virtual void setOrbit(SpaceObject *parent = 0, const irr::f32 semiMajorAxis = 0, const irr::f32 fociDistance = 0, const irr::f32 initOrientation = 0);
 
 

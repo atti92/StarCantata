@@ -4,9 +4,10 @@
 #include "irrlicht.h"
 #include <string>
 #include "Controls.h"
-#include "SOB.h"
+#include "SpaceObject.h"
 #include "Camera.h"
 
+//DEPRECATED
 class Display
 {
 public:
