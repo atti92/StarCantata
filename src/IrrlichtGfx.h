@@ -4,24 +4,26 @@
 #include "IrrlichtCore.h"
 #include "Map.h"
 #include "Camera.h"
+#include "Gui.h"
+#include "ObjectMgr.h"
 
 class IrrlichtGfx : public IrrlichtCore
 {
 private:
-    irr::core::array<Map*> mapList_;
     //Camera Stuff:
     Camera* camera_;
+    Gui* gui_;
+    ObjectMgr* objectMgr_;
 public:
+    IrrlichtGfx();
     int drawAll(Map* map);
     int drawAll(irr::u16 mapId);
-    void addObject(SpaceObject* object, irr::u16 mapId);
-    void deleteObject(SpaceObject* object);
-    void deleteObject(GUID guid);
-    GUID getGUID(SpaceObject* object);
-    SpaceObject* getObject(GUID guid);
-    Map* getMap(irr::u16 id);
-    //Camera Stuff:
     Camera* getCamera();
+    Gui* getGui();
+    ObjectMgr* getObjectMgr();
+    irr::u32 getFrameTime();
+    void updateTimer();
+    ~IrrlichtGfx();
 };
 
 #endif // IRRLICHTGFX_H

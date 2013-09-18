@@ -1,13 +1,11 @@
-#ifndef SOB_H
-#define SOB_H
+#ifndef SPACEOBJECT_H
+#define SPACEOBJECT_H
+
 #include "irrlicht.h"
 #include "Object.h"
 #include "GUID.h"
 #include "Map.h"
 
-using namespace irr;
-using namespace core;
-using namespace scene;
 
 enum SpaceObjectType  //not used
 {
@@ -66,7 +64,7 @@ public:
     {
         return irr::core::vector3df(sin(rotation.Y*PI/180), 0, cos(rotation.Y*PI/180));
     }
-    static SpaceObjType strtoSOBT(stringc arg);
+    static SpaceObjectType strToSpaceObject(irr::core::stringc arg);
 };
 
 #endif

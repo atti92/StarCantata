@@ -6,7 +6,6 @@ CONFIG -= qt
 SOURCES += \
     src/XMLhandler.cpp \
     src/User.cpp \
-    src/SOB.cpp \
     src/Program.cpp \
     src/Gui.cpp \
     src/Display.cpp \
@@ -15,15 +14,13 @@ SOURCES += \
     src/Celestial.cpp \
     pugixml/pugixml.cpp \
     src/Camera.cpp \
-    src/SpaceShip.cpp
+    src/SpaceShip.cpp \
+    src/SpaceObject.cpp
 
 HEADERS += \
-    src/XMLhandler.h \
     src/User.h \
     src/MapLoader.h \
     src/Gui.h \
-    src/Display.h \
-    src/Controls.h \
     src/Commands.h \
     src/Celestial.h \
     dependencies/irrlicht/include/vector3d.h \
@@ -219,7 +216,11 @@ HEADERS += \
     src/SpaceObject.h \
     src/Object.h \
     src/GuidGenerator.h \
-    src/Globals.h
+    src/Globals.h \
+    src/ObjectMgr.h \
+    src/XmlHandler.h \
+    src/MyEventReceiver.h \
+    src/Loader.h
 
 
 win32: LIBS += -L$$PWD/dependencies/irrlicht/lib/Win32-gcc/ -lIrrlicht \

@@ -2,7 +2,7 @@
 #include "User.h"
 #include "Celestial.h"
 
-class XMLhandler
+class XmlHandler
 {
 private:
     pugi::xml_document doc_;

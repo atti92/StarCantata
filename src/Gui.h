@@ -8,12 +8,12 @@ enum GUIElementId{
     GUI_CHAT_EDITBOX = 1386
 };
 
-class GUI
+class Gui
 {
 private:
     irr::core::array<irr::gui::IGUIElement*> guiElement_;
 public:
-    GUI();
+    Gui();
 	void createChatWindow();
     irr::gui::IGUIElement* getFocusElement();
 };

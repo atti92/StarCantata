@@ -3,8 +3,7 @@
 
 #include "irrlicht.h"
 #include "GUID.h"
-#include "Controls.h"
-//#include "Singleton.h"
+#include "MyEventReceiver.h"
 #include <iostream>
 
 
@@ -25,9 +24,10 @@ public:
     void irrlichtGfx();
     static myEventReceiver& getEventReceiver();
     static irr::IrrlichtDevice* getDevice();
-    static irr:video::IVideoDriver* getDriver();
+    static irr::video::IVideoDriver* getDriver();
     static irr::scene::ISceneManager* getSceneManager();
     static irr::gui::IGUIEnvironment* getGuiEnvironment();
+    static irr::u32 getTime();
 
 };
 

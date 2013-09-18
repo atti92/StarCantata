@@ -1,4 +1,4 @@
-#include "XMLhandler.h"
+#include "XmlHandler.h"
 #include "time.h"
 #include "Gui.h"
 #include "Globals.h"
@@ -23,32 +23,29 @@ using namespace gui;
 
 int main()
 {
-	srand ((unsigned int)time(NULL) ); //initialize random seed
-	User user;
-	Display* display = &user.display();
-    GUI overlayGui = GUI(user);
-    user.setGUI(overlayGui);
-	XMLhandler xmlhandler;
-	xmlhandler.loadMap("maps/testmap.xml", user);
+    //srand ((unsigned int)time(NULL) ); //initialize random seed
+    Globals globals;
+    globals.init();
+
 	
-    SpaceShip testship = SpaceShip(0, *display, vector3df(230,0,0));
-	display->addObject(&testship);
-	user.assignShip(&testship);
-    overlayGui.createChatWindow();
-	while(display->device->run())
+    SpaceShip testShip = SpaceShip(0, *display, vector3df(230,0,0));
+    sIGfx->getObjectMgr ()->addObject (&testShip);
+    sUser->assignShip (&testShip);
+    sIGfx->getGui ()->createChatWindow ();
+    while(sIGfx->getDevice ()->run ())
     {
-		user.timings();
-		user.keys(display->receiver);
-		display->refreshObjects(user.getDeltaTime(), user.getTime());
-		user.refreshCamera();
+        sIGfx->updateTimer ();
+        sIGfx->getObjectMgr ()->updateAll();
+        /*
 		display->Driver()->beginScene(true, true, SColor(0,0,0,0));
 
         display->Smgr()->drawAll();
         display->Guienv()->drawAll();
-
-        display->Driver()->endScene();
+        */
+        sIGfx->getDriver ()->endScene ();
 	}
-	display->Device()->drop();
+
+    sIGfx->getDevice ()->drop ();
 
 
     return 0;

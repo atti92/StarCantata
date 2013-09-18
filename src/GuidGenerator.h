@@ -1,5 +1,6 @@
 #ifndef GUIDGENERATOR_H
 #define GUIDGENERATOR_H
+
 #include "GUID.h"
 #include "SpaceObject.h"
 

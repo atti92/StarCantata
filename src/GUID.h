@@ -1,5 +1,6 @@
 #ifndef GUID_H
 #define GUID_H
+
 #include "irrlicht.h"
 
 enum GUID_HIGH{

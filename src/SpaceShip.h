@@ -2,7 +2,6 @@
 #define Ship_H
 
 #include "SpaceObject.h"		//inherited from Space object
-#include "Display.h"
 
 enum Direction {
     DIR_NONE = 0,
@@ -15,37 +14,37 @@ enum Direction {
 class SpaceShip : public SpaceObject
 {
 protected:
-    f32 hitPoints_;
-    f32 energy_;
-    f32 maxhitPoints_;
-    f32 maxenergy_;
-    f32 maxTurnSpeed_;
-    f32 maxTravelSpeed_;
-    u8 movement;
+    irr::f32 hitPoints_;
+    irr::f32 energy_;
+    irr::f32 maxHitPoints_;
+    irr::f32 maxEnergy_;
+    irr::f32 maxTurnSpeed_;
+    irr::f32 maxTravelSpeed_;
+    irr::u8 movement;
 public:
-    SpaceShip(IAnimatedMeshSceneNode* inode = 0); //example: Ship testship = someIsceneNodepointerobject; or Ship testship = Ship(someiscenenodeobj);
-    SpaceShip(const u32 type, Display& display, const vector3df pos = vector3df(0,0,0), const vector3df rot = vector3df(0,0,0));  //constructor for ship addition example: Ship testship = Ship(5, display); positions are defaulted to 0
+    SpaceShip(irr::scene::IAnimatedMeshSceneNode* inode = 0); //example: Ship testship = someIsceneNodepointerobject; or Ship testship = Ship(someiscenenodeobj);
+    SpaceShip(irr::u32 type, irr::core::vector3df pos = irr::core::vector3df(0,0,0), irr::core::vector3df rot = irr::core::vector3df(0,0,0));  //constructor for ship addition example: Ship testship = Ship(5, display); positions are defaulted to 0
     void init();
-    f32 getMaxTurnSpeed();
-    f32 getMaxTravelSpeed();
-    f32 getBaseThrustValue();
-    f32 getModdedThrustValue();
-    f32 getRealThrustValue();   //used in movement
-    f32 getRealBreakValue();
-    f32 getCurrentEnergy();
-    f32 getCurrentHp();
-    f32 getMaxEnergy();
-    f32 getMaxHp();
-    void setMaxTurnSpeed(f32 sp = 1);
-    void setMaxTravelSpeed(f32 sp = 200);
+    irr::f32 getMaxTurnSpeed();
+    irr::f32 getMaxTravelSpeed();
+    irr::f32 getBaseThrustValue();
+    irr::f32 getModdedThrustValue();
+    irr::f32 getRealThrustValue();   //used in movement
+    irr::f32 getRealBreakValue();
+    irr::f32 getCurrentEnergy();
+    irr::f32 getCurrentHp();
+    irr::f32 getMaxEnergy();
+    irr::f32 getMaxHp();
+    void setMaxTurnSpeed(irr::f32 sp = 1);
+    void setMaxTravelSpeed(irr::f32 sp = 200);
     bool isThrusting();
     bool isBreaking();
     bool isTurningACW();
     bool isTurningCW();
     void thrust(Direction dir);
     void turn(Direction dir);
-    void moveBy(vector3df speedvector);
-    void control(const f32 frameTime, const u32 time);
+    void moveBy(irr::core::vector3df speedvector);
+    void control(const irr::f32 frameTime, const irr::u32 time);
 };
 
 #endif
