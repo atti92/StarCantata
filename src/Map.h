@@ -8,7 +8,7 @@ class Map{
 private:
     irr::u16 id_;
     irr::io::path mapXmlPath_;
-    irr::core::array<SOB*> objects_;
+    irr::core::array<SpaceObject*> objects_;
 public:
     Map(irr::u16 id = 0);
     void saveMapToXml(irr::io::path path);

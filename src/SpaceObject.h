@@ -62,7 +62,7 @@ public:
 
     static const irr::core::vector3df rotToMovVector(const irr::core::vector3df rotation)
     {
-        return irr::core::vector3df(sin(rotation.Y*PI/180), 0, cos(rotation.Y*PI/180));
+        return irr::core::vector3df(sin(rotation.Y*irr::core::PI/180), 0, cos(rotation.Y*irr::core::PI/180));
     }
     static SpaceObjectType strToSpaceObject(irr::core::stringc arg);
 };
