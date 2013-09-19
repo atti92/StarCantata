@@ -11,9 +11,9 @@ enum CameraConsts
 };
 
 class Camera{
-  irr::scene::IAnimatedMeshSceneNode *cameraTarget_;
-  int minCameraDistance_, maxCameraDistance_;
-  irr::core::vector3df cameraPosition_, cameraOrientation_;
+  irr::scene::IAnimatedMeshSceneNode* target_;
+  int minDistance_, maxDistance_;
+  irr::core::vector3df position_, orientation_;
 public:
   Camera();
   void attach(SpaceObject* object);
@@ -21,7 +21,7 @@ public:
   void detach();
   void setDistance(int distance);
   int getDistance();
-  void setPosition(irr::core::vector3df position);
+  void setPosition(irr::core::vector3df position_);
   irr::core::vector3df getPosition();
   void setOrientation(irr::core::vector3df orientation);
   irr::core::vector3df getOrientation();

@@ -6,27 +6,27 @@ using namespace scene;
 
 CelestialObject::CelestialObject():SpaceObject()
 {
-  orbiting = false;
-  obj_path = PATH_BASE_OBJECT;
-  obj_path += PATH_CELESTIAL_OBJECT;
-  default_obj = DEFAULT_CELESTIAL_OBJECT;
-  default_obj += _OBJ;
+  isOrbiting_ = false;
+  meshPath_ = PATH_BASE_OBJECT;
+  meshPath_ += PATH_CELESTIAL_OBJECT;
+  defaultMesh_ = DEFAULT_CELESTIAL_OBJECT;
+  defaultMesh_ += _OBJ;
 }
 CelestialObject::CelestialObject(IAnimatedMeshSceneNode* inode):SpaceObject(inode)
 {
-  orbiting = false;
-  obj_path = PATH_BASE_OBJECT;
-  obj_path += PATH_CELESTIAL_OBJECT;
-  default_obj = DEFAULT_CELESTIAL_OBJECT;
-  default_obj += _OBJ;
+  isOrbiting_ = false;
+  meshPath_ = PATH_BASE_OBJECT;
+  meshPath_ += PATH_CELESTIAL_OBJECT;
+  defaultMesh_ = DEFAULT_CELESTIAL_OBJECT;
+  defaultMesh_ += _OBJ;
 }
 CelestialObject::CelestialObject(const f32 scale, const vector3df pos, const vector3df rot, bool lighting):SpaceObject()
 {
-  orbiting = false;
-  obj_path = PATH_BASE_OBJECT;
-  obj_path += PATH_CELESTIAL_OBJECT;
-  default_obj = DEFAULT_CELESTIAL_OBJECT;
-  default_obj += _OBJ;
+  isOrbiting_ = false;
+  meshPath_ = PATH_BASE_OBJECT;
+  meshPath_ += PATH_CELESTIAL_OBJECT;
+  defaultMesh_ = DEFAULT_CELESTIAL_OBJECT;
+  defaultMesh_ += _OBJ;
   scene_node = display.smgr->addAnimatedMeshSceneNode(display.smgr->getMesh(obj_path+default_obj), 0, -1, pos, rot, vector3df(1,1,1) * scale);
   scene_node->setMaterialFlag(video::EMF_LIGHTING, lighting);  //other than sun, light should collide with it
   scene_node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true); //scaled object
@@ -39,7 +39,7 @@ CelestialObject::CelestialObject(const f32 scale, const vector3df pos, const vec
 
 void CelestialObject::setOrbit(SpaceObject *parent, const f32 s_major_a, const f32 foci_dist, const f32 initial_rot)
 {
-  orbiting = true;
+  isOrbiting_ = true;
   this->initial_rot = initial_rot;
   this->parent = parent;
   this->foci_dist = foci_dist;
@@ -66,7 +66,7 @@ const f32 CelestialObject::eccentricAnomaly(const f32 Mean_time)  //returns the 
 
 void CelestialObject::refresh(const f32 frameTime, const u32 time)
 {
-  if(orbiting)
+  if(isOrbiting_)
     move(frameTime, time);
   else
     SOB::move(frameTime, time);
@@ -86,8 +86,8 @@ Planet::Planet(IAnimatedMeshSceneNode* inode):CelestialObject(inode){}
 
 Planet::Planet(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):Celestial(display, scale, pos, rot)
 {
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_PLANET_TEXTURE;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_PLANET_TEXTURE;
   io::path Obj_name = FILE_PLANET_TEXTURE;
   Obj_name += type;
   scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );
@@ -98,8 +98,8 @@ Moon::Moon(IAnimatedMeshSceneNode* inode):CelestialObject(inode){}
 
 Moon::Moon(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):Celestial(display, scale, pos, rot)
 {
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_MOON_TEXTURE;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_MOON_TEXTURE;
   io::path Obj_name = FILE_MOON_TEXTURE;
   Obj_name += type;
   scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );
@@ -109,10 +109,10 @@ Asteroid::Asteroid():CelestialObject(){}
 Asteroid::Asteroid(IAnimatedMeshSceneNode* inode):CelestialObject(inode){}
 Asteroid::Asteroid(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):CelestialObject()
 {
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_ASTEROID_TEXTURE;
-  obj_path = PATH_BASE_OBJECT;
-  obj_path += PATH_ASTEROID_OBJECT;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_ASTEROID_TEXTURE;
+  meshPath_ = PATH_BASE_OBJECT;
+  meshPath_ += PATH_ASTEROID_OBJECT;
   io::path Obj_name = FILE_ASTEROID_TEXTURE;
   Obj_name += type;
 
@@ -126,22 +126,22 @@ Sun::Sun():CelestialObject()
 {
   lightrange = 0;
   lightcolor = SColorf(0, 0, 0);
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_STAR_TEXTURE;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_STAR_TEXTURE;
 }
 Sun::Sun(IAnimatedMeshSceneNode* inode):CelestialObject(inode)
 {
   lightrange = 0;
   lightcolor = SColorf(0, 0, 0);
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_STAR_TEXTURE;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_STAR_TEXTURE;
 }
 Sun::Sun(u32 type, Display& display, f32 scale, vector3df pos, vector3df rot, SColorf lightcolor, f32 lightrange):Celestial(display, scale, pos, rot, false)
 {
   this->lightcolor = lightcolor;
   this->lightrange = lightrange;
-  texture_path = PATH_BASE_TEXTURE;
-  texture_path += PATH_STAR_TEXTURE;
+  texturePath_ = PATH_BASE_TEXTURE;
+  texturePath_ += PATH_STAR_TEXTURE;
   io::path Obj_name = FILE_STAR_TEXTURE;
   Obj_name += type;
   scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );

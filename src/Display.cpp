@@ -1,3 +1,6 @@
+/*
+
+
 using namespace irr;
 using namespace core;
 using namespace gui;
@@ -26,3 +29,4 @@ void Display::refreshObjects(const f32 frameTime, const u32 time)
     }
 }
 
+*/

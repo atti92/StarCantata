@@ -1,25 +1,21 @@
 #include "Gui.h"
-GUI::GUI()
+#include "Globals.h"
+
+Gui::Gui()
 {
-	user = 0;
-	env = 0;
-}
-GUI::GUI(User& user)
-{
-	this->user = &user; 
-	Display display = user.display();
-	env = display.device->getGUIEnvironment();
+  guiElement_ = 0;
 }
 
-void GUI::createChatWindow()
+void Gui::createChatWindow()
 {
-    env->addEditBox(L"Press Enter to type in text", rect<s32>(50, 500, 350, 520), false, 0, GUI_CHAT_EDITBOX);
+  sIGfx->getGuiEnvironment()->addEditBox(L"Press Enter to type in text",
+                                         rect<s32>(50, 500, 350, 520), false, 0, GUI_CHAT_EDITBOX);
 }
 
-GUIElementId GUI::getFocusElementId()
+GUIElementId Gui::getFocusElementId()
 {
-    if(this->env->getFocus() == 0)
-        return GUI_NONE;
-    return (GUIElementId) this->env->getFocus()->getID();
+  if(sIGfx->getGuiEnvironment()->getFocus() == 0)
+    return GUI_NONE;
+  return (GUIElementId) sIGfx->getGuiEnvironment()->getFocus()->getID();
 }
 

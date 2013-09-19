@@ -1,6 +1,8 @@
 #include "User.h"
 #include "Commands.h"
 
+//NEED COMPLETE REWRITE, move keys to MyEventReceiver.cpp
+
 void User::keys(myEventReceiver& receiver)  // Movement
 {
   switch (this->gui->getFocusElementId()) {

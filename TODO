@@ -7,6 +7,7 @@ Sybir: UI work.
 
 --------------------------------------------------------
 TODO:
+-ADD the remaining cpp files for the headers and make them work
 -Add some more commands, that could be used for later map making
 -Better user input handler + mouse input
 -Implement Map Save  (to xml or different map files)

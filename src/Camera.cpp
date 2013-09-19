@@ -1,66 +1,80 @@
 #include "Camera.h"
+#include "Globals.h"
 
-irr::f32 Camera::getCameraYRotation() const
-{
-  return cameraYRotation;
-}
+using namespace irr;
+using namespace core;
 
-void Camera::setCameraYRotation(const irr::f32 &value)
-{
-  cameraYRotation = value;
-}
-
-irr::f32 Camera::getMinCameraDistance()
-{
-  return (irr::f32)MIN_CAMERA_DIST;
-}
-
-irr::f32 Camera::getMaxCameraDistance()
-{
-  return (irr::f32)MAX_CAMERA_DIST;
-}
-
-void Camera::moveCameraZ(const irr::f32 d)
-{
-  if(cameraDistance + d < MAX_CAMERA_DIST && cameraDistance + d > MIN_CAMERA_DIST)
-    cameraDistance += d;
-}
-
-void Camera::rotCameraY(const irr::f32 d)
-{
-  if(cameraYRotation + d > -(irr::core::PI/2) && cameraYRotation + d < (irr::core::PI/2))
-    cameraYRotation += d;
-}
-
-void Camera::rotCameraZ(const irr::f32 d)
-{
-  if(cameraRotation + d > -(irr::core::PI/2) && cameraRotation + d < 0)
-    cameraRotation += d;
-}
-
-irr::f32 Camera::getCameraRotation() const
-{
-  return cameraRotation;
-}
-
-void Camera::setCameraRotation(const irr::f32 &value)
-{
-  cameraRotation = value;
-}
 Camera::Camera()
 {
-  cameraDistance = 1000;
-  cameraRotation = -(irr::core::PI/10);
-  cameraYRotation = 0;
+  position_ = vector3df(0,0,0);
+  orientation_ = vector3df(0,0,0);
+  target_ = 0;
+  minDistance_ = MIN_CAMERA_DIST;
+  maxDistance_ = MAX_CAMERA_DIST;
 }
 
-irr::f32 Camera::getCameraDistance() const
+void Camera::attach(SpaceObject* object)
 {
-  return cameraDistance;
+  target_ = object;
 }
 
-void Camera::setCameraDistance(const irr::f32 &value)
+void Camera::attach(GUID guid)
 {
-  cameraDistance = value;
+  SpaceObject* spaceObject = sIGfx->getObjectMgr()->getObject(guid);
+  attach(spaceObject);
 }
 
+void Camera::detach()
+{
+  target_ = 0;
+}
+
+void Camera::setDistance(int distance)
+{
+  position_.Z = static_cast<float> distance;
+}
+
+int Camera::getDistance()
+{
+  return position_.Z;
+}
+
+void Camera::setPosition(vector3df position)
+{
+  position = position;
+}
+
+vector3df Camera::getPosition()
+{
+  return position_;
+}
+
+void Camera::setOrientation(vector3df orientation)
+{
+  orientation_ = orientation;
+}
+
+vector3df Camera::getOrientation()
+{
+  return orientation_;
+}
+
+void Camera::setMaxDistance(int maxDistance)
+{
+  maxDistance_ = maxDistance;
+}
+
+int Camera::getMaxDistance()
+{
+  return maxDistance_;
+}
+
+void Camera::setMinDistance(int minDistance)
+{
+  minDistance_ = minDistance;
+}
+
+int Camera::getMinDistance()
+{
+  return minDistance_;
+}
