@@ -32,60 +32,60 @@
 class CelestialObject : public SpaceObject
 {
 protected:
-    irr::f32 meanAnomaly_;
-    irr::f32 semiMajorAxis_;
-    irr::f32 eccentricity_;
-    irr::f32 fociDistance_;
-    irr::io::path meshPath_;
-    irr::io::path texturePath_;
-    irr::io::path defaultMesh_;
-    irr::f32 initialOrientation_;
-    bool isOrbiting_;
+  irr::f32 meanAnomaly_;
+  irr::f32 semiMajorAxis_;
+  irr::f32 eccentricity_;
+  irr::f32 fociDistance_;
+  irr::io::path meshPath_;
+  irr::io::path texturePath_;
+  irr::io::path defaultMesh_;
+  irr::f32 initialOrientation_;
+  bool isOrbiting_;
 public:
-    CelestialObject();
-    CelestialObject(irr::scene::IAnimatedMeshSceneNode* inode);
-    CelestialObject(irr::f32 scale, const irr::core::vector3df pos, const irr::core::vector3df rot, bool lighting = true);
-    void setOrbit(SpaceObject *parent, const irr::f32 semiMajorAxis, const irr::f32 fociDistance, const irr::f32 initialOrientation = 0);
-    virtual void control(const irr::f32 frameTime, const irr::u32 time);
-    const irr::f32 eccentricAnomaly(const irr::f32 meanTime);  //returns the true angle from the circle angle
+  CelestialObject();
+  CelestialObject(irr::scene::IAnimatedMeshSceneNode* inode);
+  CelestialObject(irr::f32 scale, const irr::core::vector3df pos, const irr::core::vector3df rot, bool lighting = true);
+  void setOrbit(SpaceObject *parent, const irr::f32 semiMajorAxis, const irr::f32 fociDistance, const irr::f32 initialOrientation = 0);
+  virtual void control(const irr::f32 frameTime, const irr::u32 time);
+  const irr::f32 eccentricAnomaly(const irr::f32 meanTime);  //returns the true angle from the circle angle
 };
 
 class Planet : public CelestialObject
 {
 public:
-	Planet();
-    Planet(irr::scene::IAnimatedMeshSceneNode* inode);
-    Planet(const irr::u32 type, irr::f32 scale = 2, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
-    static irr::f32 getDefaultScale(){ return 15; }
+  Planet();
+  Planet(irr::scene::IAnimatedMeshSceneNode* inode);
+  Planet(const irr::u32 type, irr::f32 scale = 2, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
+  static irr::f32 getDefaultScale(){ return 15; }
 };
 
 class Moon : public CelestialObject
 {
 public:
-	Moon();
-    Moon(irr::scene::IAnimatedMeshSceneNode* inode);
-    Moon(const irr::u32 type, const irr::f32 scale = 1, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
-    static irr::f32 getDefaultScale(){ return 5; }
+  Moon();
+  Moon(irr::scene::IAnimatedMeshSceneNode* inode);
+  Moon(const irr::u32 type, const irr::f32 scale = 1, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
+  static irr::f32 getDefaultScale(){ return 5; }
 };
 
 class Asteroid : public CelestialObject
 {
 public:
-	Asteroid();
-    Asteroid(irr::scene::IAnimatedMeshSceneNode* inode);
-    Asteroid(const irr::u32 type, irr::f32 scale = 0.3, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
-    static irr::f32 getDefaultScale(){ return 1; }
+  Asteroid();
+  Asteroid(irr::scene::IAnimatedMeshSceneNode* inode);
+  Asteroid(const irr::u32 type, irr::f32 scale = 0.3, const irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), const irr::core::vector3df rot = irr::core::vector3df(0,0,0));
+  static irr::f32 getDefaultScale(){ return 1; }
 };
 
 class Sun : public CelestialObject
 {
 protected:
-    double lightRange_;
-    irr::video::SColorf lightColor_;
+  double lightRange_;
+  irr::video::SColorf lightColor_;
 public:
-	Sun();
-    Sun(irr::scene::IAnimatedMeshSceneNode* inode);
-    Sun(irr::u32 type, irr::f32 scale = 20, irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), irr::core::vector3df rot = irr::core::vector3df(0,0,0), irr::video::SColorf lightColor = irr::video::SColorf(1.f,0.f,0.f), irr::f32 lightRange = 1000);
-    static irr::f32 getDefaultScale(){ return 30; }
+  Sun();
+  Sun(irr::scene::IAnimatedMeshSceneNode* inode);
+  Sun(irr::u32 type, irr::f32 scale = 20, irr::core::vector3df pos = irr::core::vector3df(0, 0, 0), irr::core::vector3df rot = irr::core::vector3df(0,0,0), irr::video::SColorf lightColor = irr::video::SColorf(1.f,0.f,0.f), irr::f32 lightRange = 1000);
+  static irr::f32 getDefaultScale(){ return 30; }
 };
 #endif

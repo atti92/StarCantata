@@ -10,20 +10,20 @@
 class IrrlichtGfx : public IrrlichtCore
 {
 private:
-    //Camera Stuff:
-    Camera* camera_;
-    Gui* gui_;
-    ObjectMgr* objectMgr_;
+  //Camera Stuff:
+  Camera* camera_;
+  Gui* gui_;
+  ObjectMgr* objectMgr_;
 public:
-    IrrlichtGfx();
-    int drawAll(Map* map);
-    int drawAll(irr::u16 mapId);
-    Camera* getCamera();
-    Gui* getGui();
-    ObjectMgr* getObjectMgr();
-    irr::u32 getFrameTime();
-    void updateTimer();
-    ~IrrlichtGfx();
+  IrrlichtGfx();
+  int drawAll(Map* map);
+  int drawAll(irr::u16 mapId);
+  Camera* getCamera();
+  Gui* getGui();
+  ObjectMgr* getObjectMgr();
+  irr::u32 getFrameTime();
+  void updateTimer();
+  ~IrrlichtGfx();
 };
 
 #endif // IRRLICHTGFX_H

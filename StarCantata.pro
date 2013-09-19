@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    src/XMLhandler.cpp \
     src/User.cpp \
     src/Program.cpp \
     src/Gui.cpp \
@@ -15,7 +14,8 @@ SOURCES += \
     pugixml/pugixml.cpp \
     src/Camera.cpp \
     src/SpaceShip.cpp \
-    src/SpaceObject.cpp
+    src/SpaceObject.cpp \
+    src/XmlHandler.cpp
 
 HEADERS += \
     src/User.h \
@@ -245,4 +245,5 @@ win32: PRE_TARGETDEPS += $$PWD/dependencies/irrlicht/lib/Win32-gcc/libIrrlicht.a
 else:unix: PRE_TARGETDEPS += $$PWD/dependencies/irrlicht/lib/Linux/libIrrlicht.a
 
 OTHER_FILES += \
-    TODO
+    TODO \
+    Makefile

@@ -8,11 +8,11 @@
 
 class Loader{
 private:
-    static irr::u32 nLoaded;
+  static irr::u32 nLoaded;
 public:
-    Loader();
-    ~Loader();
-    virtual void* load(irr::io::path path);
+  Loader();
+  ~Loader();
+  virtual void* load(irr::io::path path);
 };
 
 #endif // LOADER_H

@@ -1,28 +1,30 @@
-#include "Controls.h"
+#include "MyEventReceiver.h"
 //Recording Events
 
-bool myEventReceiver::OnEvent(const SEvent& event)  //When an event occurs
+using namespace irr;
+
+bool MyEventReceiver::OnEvent(const SEvent& event)  //When an event occurs
 {
-	if(event.EventType == irr::EET_KEY_INPUT_EVENT) //when a key is pressed
-	{
-		KeyIsDown[event.KeyInput.Key] = event.KeyInput.PressedDown; //change the variable entry.
-	}
-	return false;
+  if(event.EventType == irr::EET_KEY_INPUT_EVENT) //when a key is pressed
+    {
+      isKeyDown_[event.KeyInput.Key] = event.KeyInput.PressedDown; //change the variable entry.
+    }
+  return false;
 }
 
-void myEventReceiver::changeKey(EKEY_CODE keycode)
+void MyEventReceiver::changeKey(EKEY_CODE keycode)
 {
-	KeyIsDown[keycode] = !KeyIsDown[keycode];
+  isKeyDown_[keycode] = !isKeyDown_[keycode];
 }
 
-const bool myEventReceiver::IsKeyDown(EKEY_CODE keycode) const
+const bool MyEventReceiver::isKeyDown (EKEY_CODE keycode)
 {
-	return KeyIsDown[keycode];
+  return isKeyDown_[keycode];
 }
-myEventReceiver::myEventReceiver()  //Initialize
+MyEventReceiver::MyEventReceiver()  //Initialize
 {
-	for(u32 i = 0; i < KEY_KEY_CODES_COUNT; i++)
-	{
-		KeyIsDown[i] = false;
-	}
+  for(u32 i = 0; i < KEY_KEY_CODES_COUNT; i++)
+    {
+      isKeyDown_[i] = false;
+    }
 }

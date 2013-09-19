@@ -9,14 +9,14 @@
 
 class Globals{
 private:
-    static IrrlichtGfx* irrlichtGfx_;
-    static User* user_;
+  static IrrlichtGfx* irrlichtGfx_;
+  static User* user_;
 public:
-    Globals();
-    static IrrlichtGfx* getIrrlichtGfx();
-    static User* getUser();
-    void init();
-    void setIrrlichtGfx();
+  Globals();
+  static IrrlichtGfx* getIrrlichtGfx();
+  static User* getUser();
+  void init();
+  void setIrrlichtGfx();
 };
 
 #endif // GLOBALS_H

@@ -5,8 +5,8 @@
 
 class MapLoader : public Loader{
 public:
-    MapLoader();
-    ~MapLoader();
+  MapLoader();
+  ~MapLoader();
 };
 
 #endif

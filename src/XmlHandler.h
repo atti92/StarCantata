@@ -5,9 +5,9 @@
 class XmlHandler
 {
 private:
-    pugi::xml_document doc_;
-    pugi::xml_parse_result result_;
+  pugi::xml_document doc_;
+  pugi::xml_parse_result result_;
 public:
-	void loadMap(const char* path, User &user);
-    void addChild(SpaceObject* parent, pugi::xml_node parentnode, User &user);
+  void loadMap(const char* path, User &user);
+  void addChild(SpaceObject* parent, pugi::xml_node parentnode, User &user);
 };

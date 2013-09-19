@@ -9,13 +9,13 @@
 class User
 {
 protected:
-    SpaceShip* spaceShip_;
+  SpaceShip* spaceShip_;
 public:
-    User();		//Constructor
-    void assignShip(SpaceShip* spaceShip);
-    SpaceShip* getSpaceShip();					//getter for the player's ship reference
+  User();		//Constructor
+  void assignShip(SpaceShip* spaceShip);
+  SpaceShip* getSpaceShip();					//getter for the player's ship reference
 
-    //calculate delta time conversion: translates the ship's rotation to the facing direction vector
+  //calculate delta time conversion: translates the ship's rotation to the facing direction vector
 };
 
 #endif

@@ -23,30 +23,30 @@ using namespace gui;
 
 int main()
 {
-    //srand ((unsigned int)time(NULL) ); //initialize random seed
-    Globals globals;
-    globals.init();
+  //srand ((unsigned int)time(NULL) ); //initialize random seed
+  Globals globals;
+  globals.init();
 
-	
-    SpaceShip testShip = SpaceShip(0, *display, vector3df(230,0,0));
-    sIGfx->getObjectMgr ()->addObject (&testShip);
-    sUser->assignShip (&testShip);
-    sIGfx->getGui ()->createChatWindow ();
-    while(sIGfx->getDevice ()->run ())
+
+  SpaceShip testShip = SpaceShip(0, *display, vector3df(230,0,0));
+  sIGfx->getObjectMgr ()->addObject (&testShip);
+  sUser->assignShip (&testShip);
+  sIGfx->getGui ()->createChatWindow ();
+  while(sIGfx->getDevice ()->run ())
     {
-        sIGfx->updateTimer ();
-        sIGfx->getObjectMgr ()->updateAll();
-        /*
-		display->Driver()->beginScene(true, true, SColor(0,0,0,0));
+      sIGfx->updateTimer ();
+      sIGfx->getObjectMgr ()->updateAll();
+      /*
+        display->Driver()->beginScene(true, true, SColor(0,0,0,0));
 
         display->Smgr()->drawAll();
         display->Guienv()->drawAll();
         */
-        sIGfx->getDriver ()->endScene ();
-	}
+      sIGfx->getDriver ()->endScene ();
+    }
 
-    sIGfx->getDevice ()->drop ();
+  sIGfx->getDevice ()->drop ();
 
 
-    return 0;
+  return 0;
 }

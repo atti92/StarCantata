@@ -6,10 +6,10 @@
 
 class GuidGenerator{
 private:
-    static GUID nextGuid_;
+  static GUID nextGuid_;
 public:
-    GuidGenerator();
-    static GUID generateGuid();
+  GuidGenerator();
+  static GUID generateGuid();
 };
 
 #endif // GUIDGENERATOR_H
