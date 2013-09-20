@@ -21,7 +21,7 @@ enum CommandType
 class Command
 {
 public:
-  static bool run(Command com, const irr::core::array<irr::core::stringc> args, User *user = 0);
-  static void help(const irr::core::array<irr::core::stringc> args);
-  static void spawn(const irr::core::array<irr::core::stringc> args, User *user);
+  static bool run(const CommandName& com, const irr::core::array<irr::core::stringc>& args);
+  static void help(const irr::core::array<irr::core::stringc>& args);
+  static void spawn(const irr::core::array<irr::core::stringc>& args);
 };

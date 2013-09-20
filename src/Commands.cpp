@@ -6,7 +6,7 @@
 using namespace irr;
 using namespace irr::core;
 
-bool Command::run(Command com, const array<stringc> args)
+bool Command::run(CommandName com, array<stringc> args)
 {
   switch(com)
     {
@@ -14,7 +14,7 @@ bool Command::run(Command com, const array<stringc> args)
       help(args);
       break;
     case COMMAND_SPAWN:
-      spawn(args, user);
+      spawn(args);
       break;
     default:
       break;

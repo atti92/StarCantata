@@ -13,7 +13,9 @@ protected:
 public:
   User();		//Constructor
   void assignShip(SpaceShip* spaceShip);
-  SpaceShip* getSpaceShip();					//getter for the player's ship reference
+  SpaceShip* getSpaceShip();		//getter for the player's ship reference
+  bool isKeyPressed(irr::EKEY_CODE key);
+  void manageControls();
 
   //calculate delta time conversion: translates the ship's rotation to the facing direction vector
 };

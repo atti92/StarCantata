@@ -16,6 +16,8 @@ public:
   Gui();
   void createChatWindow();
   irr::gui::IGUIElement* getFocusElement();
+  GUIElementId getFocusElementId();
+  bool checkChatCommand(const irr::core::stringw& chatMessage);
 };
 
 #endif

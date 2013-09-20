@@ -4,13 +4,29 @@
 using namespace irr;
 using namespace core;
 
+
+irr::f32 Camera::movementSpeed() const
+{
+  return movementSpeed_;
+}
+
+void Camera::setMovementSpeed(const irr::f32& movementSpeed)
+{
+  movementSpeed_ = movementSpeed;
+}
+
+irr::f32 Camera::rotateSpeed() const
+{
+  return rotateSpeed_;
+}
+
+void Camera::setRotateSpeed(const irr::f32& rotateSpeed)
+{
+  rotateSpeed_ = rotateSpeed;
+}
 Camera::Camera()
 {
-  position_ = vector3df(0,0,0);
-  orientation_ = vector3df(0,0,0);
-  target_ = 0;
-  minDistance_ = MIN_CAMERA_DIST;
-  maxDistance_ = MAX_CAMERA_DIST;
+  reset(true);
 }
 
 void Camera::attach(SpaceObject* object)
@@ -77,4 +93,33 @@ void Camera::setMinDistance(int minDistance)
 int Camera::getMinDistance()
 {
   return minDistance_;
+}
+
+void Camera::move(vector3df direction, u32 frameTime)
+{
+  position_ += direction * movementSpeed_ * frameTime;
+}
+
+void Camera::rotate(vector3df direction, u32 frameTime)
+{
+  orientation_ += direction * frameTime * rotateSpeed_;
+  orientation_ = orientation_.normalize ();
+}
+
+void Camera::reset(bool isFullReset)
+{
+  if(isFullReset)
+  {
+    target_ = 0;
+    position_ = vector3df(0,0,0);
+  }
+  orientation_ = vector3df(0,0,0);
+  minDistance_ = MIN_CAMERA_DIST;
+  maxDistance_ = MAX_CAMERA_DIST;
+  movementSpeed_ = DEF_MOVEMENT_SPEED;
+}
+
+void Camera::control()
+{
+  //refresh camera position
 }

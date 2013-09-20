@@ -17,12 +17,12 @@ protected:
   static irr::video::IVideoDriver* driver_;
   static irr::scene::ISceneManager* scenemgr_;
   static irr::gui::IGUIEnvironment* guienv_;
-  static myEventReceiver receiver_;
+  static MyEventReceiver* receiver_;
 public:
   IrrlichtCore();
   static void initIrrlicht();
   void irrlichtGfx();
-  static myEventReceiver& getEventReceiver();
+  static MyEventReceiver* getEventReceiver();
   static irr::IrrlichtDevice* getDevice();
   static irr::video::IVideoDriver* getDriver();
   static irr::scene::ISceneManager* getSceneManager();
