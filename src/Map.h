@@ -11,13 +11,15 @@ private:
   irr::core::array<SpaceObject*> objects_;
 public:
   Map(irr::u16 id = 0);
-  void saveMapToXml(irr::io::path path);
-  void loadMapFromXml(irr::io::path path);
+  void saveMapToXml(const irr::io::path& path);
+  void loadMapFromXml(const irr::io::path& path);
   void addToList();
-  void addObject(SpaceObject* object);
-  void removeObject(SpaceObject* object);
-  void removeObject(GUID guid);
-  irr::u16 getId();
+  void addObject(const SpaceObject* object);
+  void removeObject(const SpaceObject* object);
+  void removeObject(const GUID& guid);
+  irr::u16 getId() const;
+  SpaceObject* getObject(const GUID& guid);
+  void updateAll();
 };
 
 #endif // MAP_H

@@ -15,7 +15,11 @@ SOURCES += \
     src/Camera.cpp \
     src/SpaceShip.cpp \
     src/SpaceObject.cpp \
-    src/XmlHandler.cpp
+    src/XmlHandler.cpp \
+    src/Map.cpp \
+    src/Globals.cpp \
+    src/GUID.cpp \
+    src/ObjectMgr.cpp
 
 HEADERS += \
     src/User.h \

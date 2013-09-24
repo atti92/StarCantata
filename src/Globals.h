@@ -16,7 +16,8 @@ public:
   static IrrlichtGfx* getIrrlichtGfx();
   static User* getUser();
   void init();
-  void setIrrlichtGfx();
+  void setIrrlichtGfx(IrrlichtGfx* irrlichtGfx);
+  void setUser(User* user);
 };
 
 #endif // GLOBALS_H

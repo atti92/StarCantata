@@ -9,13 +9,18 @@ class ObjectMgr{
 private:
   irr::core::array<Map*> mapList_;
 public:
+  ObjectMgr();
+  ObjectMgr(const ObjectMgr& other);
+  const irr::core::array<Map*>& getMapList() const;
+  ~ObjectMgr();
   void updateAll();
-  void addObject(SpaceObject* object, irr::u16 mapId);
-  void deleteObject(SpaceObject* object);
-  void deleteObject(GUID guid);
-  GUID getGUID(SpaceObject* object);
-  SpaceObject* getObject(GUID guid);
-  Map* getMap(irr::u16 id);
+  void addMap(Map* map);
+  void addObject(SpaceObject* object, const irr::u16& mapId);
+  void removeObject(SpaceObject* object);
+  void removeObject(const GUID& guid);
+  const GUID& getGUID(const SpaceObject* object) const;
+  SpaceObject* getObject(const GUID& guid);
+  Map* getMap(const irr::u16& id);
 };
 
 #endif // OBJECTMGR_H
