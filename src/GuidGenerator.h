@@ -7,8 +7,11 @@
 class GuidGenerator{
 private:
   static GUID nextGuid_;
+  static array<GUID> nextGuids_;
 public:
   GuidGenerator();
+  ~GuidGenerator();
+  void init();
   static GUID generateGuid();
 };
 

@@ -28,6 +28,11 @@ void ObjectMgr::addMap (Map *map)
   mapList_.insert (map);
 }
 
+void ObjectMgr::removeMap (Map *map)
+{
+  mapList_.erase (mapList_.linear_search (map));
+}
+
 void ObjectMgr::addObject (SpaceObject *object, u16 mapId)
 {
   getMap(mapId)->addObject (object);

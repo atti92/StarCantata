@@ -4,7 +4,10 @@ using namespace irr;
 
 GUID::GUID(u64 num)
 {
-  guid_ = num;
+  guid_ = 0;
+  for (int i = 0; i < 7; ++i) {
+    guid_ += static_cast<u8>(num >> (i * 8));
+  }
 }
 
 u32 GUID::getHigh ()
@@ -35,18 +38,24 @@ u8 GUID::operator [] (u8 id)
 
 GUID::operator u64()
 {
-  //u64 temp = getHigh() << 32 + getLow();
-  return static_cast<u64>(guid_);
+  u64 temp = getHigh() << 32 + getLow();
+  return temp;
 }
 
 GUID& GUID::operator + (u64 num)
 {
-  guid_ += num;
+  u64 temp = static_cast<u64>guid_ + num;
+  for (int i = 0; i < 7; ++i) {
+    guid_[i] = static_cast<u8>(temp >> (i * 8));
+  }
 }
 
 GUID& GUID::operator + (s64 num)
 {
-  guid_ += num;
+  u64 temp = static_cast<u64>guid_ + num;
+  for (int i = 0; i < 7; ++i) {
+    guid_[i] = static_cast<u8>(temp >> (i * 8));
+  }
 }
 
 GUID& GUID::operator + (GUID num)

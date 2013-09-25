@@ -13,6 +13,7 @@ private:
   static User* user_;
 public:
   Globals();
+  ~Globals();
   static IrrlichtGfx* getIrrlichtGfx();
   static User* getUser();
   void init();

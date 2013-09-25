@@ -3,7 +3,7 @@
 
 #include "irrlicht.h"
 
-enum GUID_HIGH{
+enum Guid_High{
   GUID_PLAYER = 0,
   GUID_SPACESHIP_AI = 1,
   GUID_SPACESHIP = 2,

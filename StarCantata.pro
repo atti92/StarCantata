@@ -7,7 +7,6 @@ SOURCES += \
     src/User.cpp \
     src/Program.cpp \
     src/Gui.cpp \
-    src/Display.cpp \
     src/Controls.cpp \
     src/Commands.cpp \
     src/Celestial.cpp \
@@ -19,7 +18,10 @@ SOURCES += \
     src/Map.cpp \
     src/Globals.cpp \
     src/GUID.cpp \
-    src/ObjectMgr.cpp
+    src/ObjectMgr.cpp \
+    src/IrrlichtGfx.cpp \
+    src/IrrlichtCore.cpp \
+    src/GuidGenerator.cpp
 
 HEADERS += \
     src/User.h \

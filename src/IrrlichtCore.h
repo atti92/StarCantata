@@ -20,7 +20,7 @@ protected:
   static MyEventReceiver* receiver_;
 public:
   IrrlichtCore();
-  static void initIrrlicht();
+  virtual void initIrrlicht();
   void irrlichtGfx();
   static MyEventReceiver* getEventReceiver();
   static irr::IrrlichtDevice* getDevice();

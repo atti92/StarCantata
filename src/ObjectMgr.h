@@ -15,6 +15,7 @@ public:
   ~ObjectMgr();
   void updateAll();
   void addMap(Map* map);
+  void removeMap(Map* map);
   void addObject(SpaceObject* object, const irr::u16& mapId);
   void removeObject(SpaceObject* object);
   void removeObject(const GUID& guid);

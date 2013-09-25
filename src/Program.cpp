@@ -36,12 +36,6 @@ int main()
     {
       sIGfx->updateTimer ();
       sIGfx->getObjectMgr ()->updateAll();
-      /*
-        display->Driver()->beginScene(true, true, SColor(0,0,0,0));
-
-        display->Smgr()->drawAll();
-        display->Guienv()->drawAll();
-        */
       sIGfx->getDriver ()->endScene ();
     }
 
