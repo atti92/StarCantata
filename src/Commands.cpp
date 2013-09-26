@@ -6,7 +6,7 @@
 using namespace irr;
 using namespace irr::core;
 
-bool Command::run(CommandName com, array<stringc> args)
+bool Command::run(const CommandName &com, const irr::core::array<stringc> &args)
 {
   switch(com)
     {
@@ -21,7 +21,7 @@ bool Command::run(CommandName com, array<stringc> args)
     }
   return true;
 }
-void Command::help(const array<stringc> args)
+void Command::help(const irr::core::array<stringc> &args)
 {
   if(args[0].empty())
     {
@@ -30,27 +30,34 @@ void Command::help(const array<stringc> args)
     }
 }
 
-void Command::spawn(const array<stringc> args)
+void Command::spawn(const irr::core::array<stringc> &args)
 {
   f32 param2 = 0;
   if(args.size() > 1)
     param2 = strtof10(args[1].c_str());
   SpaceObject *spawnedObj = 0;
-  switch (SpaceObject::strtoSOBT(args[0])) {
+  vector3df pos = sUser->getSpaceShip ()->getPosition ();
+  vector3df orientation = sUser->getSpaceShip ()->getOrientation ();
+
+  switch (SpaceObject::strToSpaceObject (args[0])) {
     case SOB_SUN:
-      spawnedObj = new Sun(0, (param2<0.1)?(Sun::getDefaultScale()):param2, user->getMyShip().getPosition(), user->getMyShip().getRotation());
+      spawnedObj = new Sun(0, (param2<0.1)?(Sun::getDefaultScale()):param2,
+                           pos, orientation);
       break;
     case SOB_PLANET:
-      spawnedObj = new Planet(0, (param2<0.1)?(Planet::getDefaultScale()):param2, user->getMyShip().getPosition(), user->getMyShip().getRotation());
+      spawnedObj = new Planet(0, (param2<0.1)?(Planet::getDefaultScale()):param2,
+                              pos, orientation);
       break;
     case SOB_MOON:
-      spawnedObj = new Moon(0, (param2<0.1)?(Moon::getDefaultScale()):param2, user->getMyShip().getPosition(), user->getMyShip().getRotation());
+      spawnedObj = new Moon(0, (param2<0.1)?(Moon::getDefaultScale()):param2,
+                            pos, orientation);
       break;
     case SOB_ASTEROID:
-      spawnedObj = new Asteroid(0, (param2<0.1)?(Asteroid::getDefaultScale()):param2, user->getMyShip().getPosition(), user->getMyShip().getRotation());
+      spawnedObj = new Asteroid(0, (param2<0.1)?(Asteroid::getDefaultScale()):param2,
+                                pos, orientation);
       break;
     case SOB_SPACESHIP:
-      spawnedObj = new SpaceShip(0, user->getMyShip().getPosition(), user->getMyShip().getRotation());
+      spawnedObj = new SpaceShip(0, pos, orientation);
       break;
     default:
       break;

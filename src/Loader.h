@@ -2,6 +2,7 @@
 #define LOADER_H
 
 #include "irrlicht.h"
+#include "pugixml.hpp"
 
 #define PATH_MAP "./data/maps/"
 #define PATH_SPACESHIP "./data/spaceships/"
@@ -9,6 +10,8 @@
 class Loader{
 private:
   static irr::u32 nLoaded;
+  pugi::xml_document doc_;
+  pugi::xml_parse_result result_;
 public:
   Loader();
   ~Loader();

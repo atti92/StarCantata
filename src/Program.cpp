@@ -1,4 +1,3 @@
-#include "XmlHandler.h"
 #include "time.h"
 #include "Gui.h"
 #include "Globals.h"
@@ -27,8 +26,7 @@ int main()
   Globals globals;
   globals.init();
 
-
-  SpaceShip testShip = SpaceShip(0, *display, vector3df(230,0,0));
+  SpaceShip testShip = SpaceShip(0, vector3df(230,0,0));
   sIGfx->getObjectMgr ()->addObject (&testShip);
   sUser->assignShip (&testShip);
   sIGfx->getGui ()->createChatWindow ();

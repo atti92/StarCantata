@@ -29,10 +29,10 @@ GUIElementId Gui::getFocusElementId()
   return (GUIElementId) sIGfx->getGuiEnvironment()->getFocus()->getID();
 }
 
-bool Gui::checkCommand(stringw text)
+bool Gui::checkChatCommand(const stringw &chatMessage)
 {
   array<stringc> args;
-  stringc textc = static_cast<stringc> text;
+  stringc textc = static_cast<stringc>(chatMessage);
   if(textc[0] == '.')
   {
     CommandName act;

@@ -4,6 +4,8 @@
 #include "irrlicht.h"
 #include "SpaceObject.h"
 
+class SpaceObject;
+
 class Map{
 private:
   irr::u16 id_;
@@ -20,6 +22,7 @@ public:
   void removeObject(const SpaceObject* object);
   void removeObject(const GUID& guid);
   irr::u16 getId() const;
+  void setId(const irr::u16& id);
   SpaceObject* getObject(const GUID& guid);
   void updateAll();
   const irr::core::array<SpaceObject*>& getObjectList() const;

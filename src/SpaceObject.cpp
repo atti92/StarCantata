@@ -33,7 +33,7 @@ void SpaceObject::setPositionRelative (vector3df pos, SpaceObject* parent)
   setPosition(newPos);
 }
 
-SpaceObjectType SpaceObject::strtoSOBT(stringc arg)
+SpaceObjectType SpaceObject::strToSpaceObject (stringc arg)
 {
   if(arg.equals_ignore_case("star"))
     return SOB_SUN;

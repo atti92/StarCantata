@@ -19,7 +19,7 @@ enum Guid_High{
 class GUID
 {
 private:
-  irr::array<irr::u8> guid_;
+  irr::core::array<irr::u8> guid_;
 public:
   GUID(const irr::u64& num = 0);
   void set(const irr::u64& num = 0);
@@ -31,6 +31,6 @@ public:
   GUID& operator + (const irr::s64& num);
   GUID& operator + (const irr::u64& num);
   GUID& operator + (const GUID& num);
-}
+};
 
 #endif // GUID_H

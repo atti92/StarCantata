@@ -8,6 +8,7 @@
 class ObjectMgr{
 private:
   irr::core::array<Map*> mapList_;
+  irr::u16 nextId_;
 public:
   ObjectMgr();
   ObjectMgr(const ObjectMgr& other);
@@ -16,7 +17,7 @@ public:
   void updateAll();
   void addMap(Map* map);
   void removeMap(Map* map);
-  void addObject(SpaceObject* object, const irr::u16& mapId);
+  void addObject(SpaceObject* object, const irr::u16& mapId = 0);
   void removeObject(SpaceObject* object);
   void removeObject(const GUID& guid);
   const GUID& getGUID(const SpaceObject* object) const;

@@ -54,6 +54,11 @@ u16 Map::getId ()
   return id_;
 }
 
+void Map::setId (const u16 &id)
+{
+  id_ = id;
+}
+
 SpaceObject* Map::getObject (GUID guid)
 {
   for (SpaceObject** it = objects_.pointer (); (*it) != objects_.getLast (); ++it) {

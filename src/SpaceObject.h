@@ -16,6 +16,7 @@ enum SpaceObjectType  //not used
   SOB_MOON        = 4,
   SOB_ASTEROID    = 5
 };
+class Map;
 
 class SpaceObject : public Object
 {

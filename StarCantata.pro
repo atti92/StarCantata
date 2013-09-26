@@ -7,21 +7,22 @@ SOURCES += \
     src/User.cpp \
     src/Program.cpp \
     src/Gui.cpp \
-    src/Controls.cpp \
     src/Commands.cpp \
     src/Celestial.cpp \
     pugixml/pugixml.cpp \
     src/Camera.cpp \
     src/SpaceShip.cpp \
     src/SpaceObject.cpp \
-    src/XmlHandler.cpp \
     src/Map.cpp \
     src/Globals.cpp \
     src/GUID.cpp \
     src/ObjectMgr.cpp \
     src/IrrlichtGfx.cpp \
     src/IrrlichtCore.cpp \
-    src/GuidGenerator.cpp
+    src/GuidGenerator.cpp \
+    src/MyEventReceiver.cpp \
+    src/Loader.cpp \
+    src/MapLoader.cpp
 
 HEADERS += \
     src/User.h \
@@ -224,7 +225,6 @@ HEADERS += \
     src/GuidGenerator.h \
     src/Globals.h \
     src/ObjectMgr.h \
-    src/XmlHandler.h \
     src/MyEventReceiver.h \
     src/Loader.h
 

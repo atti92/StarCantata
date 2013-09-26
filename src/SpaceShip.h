@@ -3,6 +3,9 @@
 
 #include "SpaceObject.h"		//inherited from Space object
 
+#define SPACESHIP_MESH_PATH "objects/spaceship"
+#define SPACESHIP_TEXTURE_PATH "texture/spaceship"
+
 enum Direction {
   DIR_NONE = 0,
   DIR_FORWARD,
@@ -44,7 +47,7 @@ public:
   void thrust(Direction dir);
   void turn(Direction dir);
   void moveBy(irr::core::vector3df speedvector);
-  void control(const irr::f32 frameTime, const irr::u32 time);
+  void control();
 };
 
 #endif

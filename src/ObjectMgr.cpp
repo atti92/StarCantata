@@ -25,6 +25,10 @@ array<Map*> ObjectMgr::getMapList ()
 
 void ObjectMgr::addMap (Map *map)
 {
+  if(map->getId () == 0)
+  {
+    map->setId(nextId_++);
+  }
   mapList_.insert (map);
 }
 

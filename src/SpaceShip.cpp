@@ -12,25 +12,23 @@ SpaceShip::SpaceShip(IAnimatedMeshSceneNode* inode)
   this->init();
 }
 
-SpaceShip::SpaceShip(const u32 type, const vector3df pos, const vector3df rot)
+SpaceShip::SpaceShip(u32 type, vector3df pos, vector3df rot)
 {
   //Still working on the ObjectMgr class plan to make this work.
   this->init();
-  const io::path ship_obj_path = "objects/spaceship/";
-  const io::path textures = "textures/spaceship/";
   io::path shipType[20];  // A list could be loaded from a file
   shipType[0] = "RPG_Scythe_1.obj";
   //NEED TO CHANGE END
-
-  scene_node = display.smgr->addAnimatedMeshSceneNode(
-        display.smgr->getMesh(ship_obj_path+shipType[type]), 0, -1, pos, rot);  //create ship scene
-  scene_node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true); //scaled object
-  scene_node->getMaterial(0).AmbientColor.set(255,255,255,255);
-  scene_node->getMaterial(0).EmissiveColor.set(0,0,0,0);
-  scene_node->getMaterial(0).DiffuseColor.set(255,0,0,255);
-  scene_node->setMaterialFlag(video::EMF_ANISOTROPIC_FILTER , true);
+  ISceneManager* smgr = sIGfx->getSceneManager ();
+  sceneNode_ = smgr->addAnimatedMeshSceneNode(
+        smgr->getMesh(static_cast<io::path>(SPACESHIP_MESH_PATH)+shipType[type]), 0, -1, pos, rot);  //create ship scene
+  sceneNode_->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true); //scaled object
+  sceneNode_->getMaterial(0).AmbientColor.set(255,255,255,255);
+  sceneNode_->getMaterial(0).EmissiveColor.set(0,0,0,0);
+  sceneNode_->getMaterial(0).DiffuseColor.set(255,0,0,255);
+  sceneNode_->setMaterialFlag(video::EMF_ANISOTROPIC_FILTER , true);
   this->setPosition(pos);
-  this->setRotation(rot);
+  this->setOrientation(rot);
 }
 
 void SpaceShip::init()
@@ -50,26 +48,27 @@ void SpaceShip::control()
   u32 frameTime = sIGfx->getFrameTime ();
 
   if(isThrusting())
+  {
+    movementSpeed_ += rotToMovVector(getOrientation ())*
+        frameTime *
+        getRealThrustValue();
+    if(getMaxTravelSpeed() < movementSpeed_.getLength())
     {
-      movementSpeed_ += rotToMovVector(getOrientation ())* frameTime *
-          getRealThrustValue();
-      if(getMaxTravelSpeed() < movementSpeed_.getLength())
-        {
-          setMovementSpeedAbs (getMaxTravelSpeed ());
-        }
+      setMovementSpeedAbs (getMaxTravelSpeed ());
     }
+  }
   if(isBreaking())
-    {
-      if(getMovementSpeedAbs () > 0)
-        setMovSpeedValue(getMovementSpeedAbs () - frameTime * getRealBreakValue ());
-      if(this->getMovementSpeedAbs () < 0)
-        this->setMovementSpeedAbs (0);
-    }
+  {
+    if(getMovementSpeedAbs () > 0)
+      setMovementSpeedAbs (getMovementSpeedAbs () - frameTime * getRealBreakValue ());
+    if(getMovementSpeedAbs () < 0)
+      setMovementSpeedAbs (0);
+  }
   if(isTurningACW() || isTurningCW())
-    {
-      setOrientation (this->getOrientation () + vector3df(0, (isTurningACW()?-1:1) *
-                                                          frameTime * getMaxTurnSpeed (), 0) );
-    }
+  {
+    setOrientation (this->getOrientation () + vector3df(0, (isTurningACW()?-1:1) *
+                                                        frameTime * getMaxTurnSpeed (), 0) );
+  }
   movement_ = 0;   //not sticky
 }
 void SpaceShip::thrust(Direction dir)
@@ -84,7 +83,7 @@ void SpaceShip::thrust(Direction dir)
     default:
       movement_ = movement_ & 0xFC;
       break;
-    }
+  }
 }
 
 void SpaceShip::turn(Direction dir)
@@ -99,7 +98,7 @@ void SpaceShip::turn(Direction dir)
     default:
       movement_ = movement_ & 0xF3;
       break;
-    }
+  }
 }
 
 

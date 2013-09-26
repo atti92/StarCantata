@@ -15,18 +15,18 @@ User::User()
   sIGfx->getObjectMgr ()->addObject (ship);
 }
 
-User::assignShip (SpaceShip *spaceShip)
+void User::assignShip (SpaceShip *spaceShip)
 {
   spaceShip_ = spaceShip;
   sIGfx->getCamera ()->attach (spaceShip);
 }
 
-User::isKeyPressed (EKEY_CODE key)
+bool User::isKeyPressed (EKEY_CODE key)
 {
   return sIGfx->getEventReceiver ()->isKeyDown (key);
 }
 
-User::manageControls ()
+void User::manageControls ()
 {
   u32 frameTime = sIGfx->getFrameTime ();
   switch (sIGfx->getGui ()->getFocusElementId())
