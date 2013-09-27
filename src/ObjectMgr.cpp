@@ -5,20 +5,20 @@ using namespace core;
 
 ObjectMgr::ObjectMgr()
 {
-  mapList_ = new array<Map*>();
+  this->nextId_ = 0;
 }
 
-ObjectMgr::ObjectMgr(ObjectMgr other)
+ObjectMgr::ObjectMgr(const ObjectMgr &other)
 {
-  mapList_ = new array<Map*>(other.getMapList ());
+  mapList_ = other.getMapList ();
 }
 
 ObjectMgr::~ObjectMgr ()
 {
-  delete[] mapList_;
+  mapList_.clear ();
 }
 
-array<Map*> ObjectMgr::getMapList ()
+const array<Map*>& ObjectMgr::getMapList () const
 {
   return mapList_;
 }
@@ -37,7 +37,7 @@ void ObjectMgr::removeMap (Map *map)
   mapList_.erase (mapList_.linear_search (map));
 }
 
-void ObjectMgr::addObject (SpaceObject *object, u16 mapId)
+void ObjectMgr::addObject (SpaceObject *object, const u16& mapId)
 {
   getMap(mapId)->addObject (object);
 }
@@ -47,26 +47,27 @@ void ObjectMgr::removeObject (SpaceObject *object)
   object->getMap ()->removeObject (object);
 }
 
-void ObjectMgr::removeObject (GUID guid)
+void ObjectMgr::removeObject (const GUID& guid)
 {
   removeObject(getObject (guid));
 }
 
-GUID ObjectMgr::getGUID (SpaceObject *object)
+const GUID& ObjectMgr::getGUID (const SpaceObject *object) const
 {
   return object->getGUID ();
 }
 
-Map* ObjectMgr::getMap (u16 id)
+Map* ObjectMgr::getMap (const u16& id)
 {
   for( Map** it = mapList_.pointer (); *it != mapList_.getLast (); ++it)
   {
     if((*it)->getId() == id)
       return (*it);
   }
+  return 0;
 }
 
-SpaceObject* ObjectMgr::getObject (GUID guid)
+SpaceObject* ObjectMgr::getObject (const GUID& guid)
 {
   for( Map** it = mapList_.pointer (); *it != mapList_.getLast (); ++it)
   {
@@ -74,6 +75,7 @@ SpaceObject* ObjectMgr::getObject (GUID guid)
     if( temp != 0)
       return temp;
   }
+  return 0;
 }
 
 void ObjectMgr::updateAll ()

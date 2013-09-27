@@ -1,26 +1,36 @@
 #include "Globals.h"
 
+//static member variables:
+
+IrrlichtGfx* Globals::irrlichtGfx_ = 0;
+User* Globals::user_ = 0;
+
 Globals::Globals()
 {
   init();
 }
 
+Globals::~Globals ()
+{
+
+}
+
 void Globals::init ()
 {
   if(this->irrlichtGfx_ == 0)
-    irrlichtGfx_ = new IrrlichtGfx();
+    this->irrlichtGfx_ = new IrrlichtGfx();
   if(this->user_ == 0)
-    user_ = new User();
+    this->user_ = new User();
 }
 
 IrrlichtGfx* Globals::getIrrlichtGfx()
 {
-  return irrlichtGfx_;
+  return Globals::irrlichtGfx_;
 }
 
 User* Globals::getUser ()
 {
-  return user_;
+  return Globals::user_;
 }
 
 void Globals::setIrrlichtGfx (IrrlichtGfx* irrlichtGfx)

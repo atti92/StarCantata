@@ -18,7 +18,6 @@ public:
   IrrlichtGfx();
   virtual void initIrrlicht();
   irr::u32 drawAll(Map* map);
-  irr::u32 drawAll(irr::u16 mapId);
   Camera* getCamera();
   Gui* getGui();
   ObjectMgr* getObjectMgr();

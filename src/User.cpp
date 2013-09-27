@@ -21,6 +21,11 @@ void User::assignShip (SpaceShip *spaceShip)
   sIGfx->getCamera ()->attach (spaceShip);
 }
 
+SpaceShip* User::getSpaceShip ()
+{
+  return spaceShip_;
+}
+
 bool User::isKeyPressed (EKEY_CODE key)
 {
   return sIGfx->getEventReceiver ()->isKeyDown (key);

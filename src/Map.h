@@ -18,10 +18,10 @@ public:
   void saveMapToXml(const irr::io::path& path);
   void loadMapFromXml(const irr::io::path& path);
   void addToList();
-  void addObject(const SpaceObject* object);
-  void removeObject(const SpaceObject* object);
+  void addObject(SpaceObject* object);
+  void removeObject(SpaceObject* object);
   void removeObject(const GUID& guid);
-  irr::u16 getId() const;
+  const irr::u16& getId() const;
   void setId(const irr::u16& id);
   SpaceObject* getObject(const GUID& guid);
   void updateAll();

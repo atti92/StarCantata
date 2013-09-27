@@ -21,7 +21,6 @@ protected:
 public:
   IrrlichtCore();
   virtual void initIrrlicht();
-  void irrlichtGfx();
   static MyEventReceiver* getEventReceiver();
   static irr::IrrlichtDevice* getDevice();
   static irr::video::IVideoDriver* getDriver();

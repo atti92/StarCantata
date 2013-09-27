@@ -12,15 +12,16 @@ bool MyEventReceiver::OnEvent(const SEvent& event)  //When an event occurs
   return false;
 }
 
-void MyEventReceiver::changeKey(EKEY_CODE keycode)
+void MyEventReceiver::changeKey(const EKEY_CODE &keycode)
 {
   isKeyDown_[keycode] = !isKeyDown_[keycode];
 }
 
-const bool MyEventReceiver::isKeyDown (EKEY_CODE keycode)
+bool MyEventReceiver::isKeyDown (const EKEY_CODE &keycode)
 {
   return isKeyDown_[keycode];
 }
+
 MyEventReceiver::MyEventReceiver()  //Initialize
 {
   for(u32 i = 0; i < KEY_KEY_CODES_COUNT; i++)

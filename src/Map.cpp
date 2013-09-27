@@ -6,25 +6,25 @@ using namespace core;
 
 Map::Map(irr::u16 id)
 {
-  objects_ = new array<SpaceObject*>();
+  id_ = id;
 }
 
-Map::Map(Map other)
+Map::Map(const Map &other)
 {
-  objects_ = new array<SpaceObject*>(other.getObjectList);
+  objects_ = other.getObjectList();
 }
 
 Map::~Map()
 {
-  delete[] objects_;
+  objects_.empty ();
 }
 
-void Map::saveMapToXml (io::path path)
+void Map::saveMapToXml (const io::path &path)
 {
 
 }
 
-void Map::loadMapFromXml (io::path path)
+void Map::loadMapFromXml (const io::path &path)
 {
 
 }
@@ -39,7 +39,7 @@ void Map::addObject (SpaceObject *object)
   objects_.insert (object);
 }
 
-void Map::removeObject (GUID guid)
+void Map::removeObject (const GUID &guid)
 {
   removeObject (getObject(guid));
 }
@@ -49,7 +49,7 @@ void Map::removeObject (SpaceObject *object)
   objects_.erase (objects_.linear_search (object));
 }
 
-u16 Map::getId ()
+const u16& Map::getId () const
 {
   return id_;
 }
@@ -59,7 +59,7 @@ void Map::setId (const u16 &id)
   id_ = id;
 }
 
-SpaceObject* Map::getObject (GUID guid)
+SpaceObject* Map::getObject (const GUID &guid)
 {
   for (SpaceObject** it = objects_.pointer (); (*it) != objects_.getLast (); ++it) {
     if((*it)->getGUID () == guid)
@@ -75,7 +75,7 @@ void Map::updateAll ()
   }
 }
 
-array<SpaceObject*> Map::getObjectList()
+const array<SpaceObject*>& Map::getObjectList() const
 {
   return objects_;
 }

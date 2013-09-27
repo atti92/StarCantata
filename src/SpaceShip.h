@@ -8,10 +8,10 @@
 
 enum Direction {
   DIR_NONE = 0,
-  DIR_FORWARD,
-  DIR_BACKWARD,
-  DIR_CLOCKWISE,
-  DIR_ANTI_CLOCKWISE
+  DIR_FORWARD = 1,
+  DIR_BACKWARD = 2,
+  DIR_CLOCKWISE = 4,
+  DIR_ANTI_CLOCKWISE = 8
 };
 
 class SpaceShip : public SpaceObject
@@ -28,25 +28,25 @@ public:
   SpaceShip(irr::scene::IAnimatedMeshSceneNode* inode = 0); //example: Ship testship = someIsceneNodepointerobject; or Ship testship = Ship(someiscenenodeobj);
   SpaceShip(irr::u32 type, irr::core::vector3df pos = irr::core::vector3df(0,0,0), irr::core::vector3df rot = irr::core::vector3df(0,0,0));  //constructor for ship addition example: Ship testship = Ship(5, display); positions are defaulted to 0
   void init();
-  irr::f32 getMaxTurnSpeed();
-  irr::f32 getMaxTravelSpeed();
-  irr::f32 getBaseThrustValue();
-  irr::f32 getModdedThrustValue();
-  irr::f32 getRealThrustValue();   //used in movement
-  irr::f32 getRealBreakValue();
-  irr::f32 getCurrentEnergy();
-  irr::f32 getCurrentHp();
-  irr::f32 getMaxEnergy();
-  irr::f32 getMaxHp();
-  void setMaxTurnSpeed(irr::f32 sp = 1);
-  void setMaxTravelSpeed(irr::f32 sp = 200);
-  bool isThrusting();
-  bool isBreaking();
-  bool isTurningACW();
-  bool isTurningCW();
+  const irr::f32& getMaxTurnSpeed() const;
+  const irr::f32& getMaxTravelSpeed() const;
+  const irr::f32 getBaseThrustValue() const;
+  const irr::f32 getModdedThrustValue() const;
+  const irr::f32 getRealThrustValue() const;   //used in movement
+  const irr::f32 getRealBreakValue() const;
+  const irr::f32& getCurrentEnergy() const;
+  const irr::f32& getCurrentHp() const;
+  const irr::f32& getMaxEnergy() const;
+  const irr::f32& getMaxHp() const;
+  void setMaxTurnSpeed(const irr::f32& sp = 1);
+  void setMaxTravelSpeed(const irr::f32& sp = 200);
+  const bool isThrusting() const;
+  const bool isBreaking() const;
+  const bool isTurningACW() const;
+  const bool isTurningCW() const;
   void thrust(Direction dir);
   void turn(Direction dir);
-  void moveBy(irr::core::vector3df speedvector);
+  void moveBy(const irr::core::vector3df& speedvector);
   void control();
 };
 

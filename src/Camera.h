@@ -15,12 +15,15 @@ class Camera{
   irr::f32 movementSpeed_, rotateSpeed_;
   int minDistance_, maxDistance_;
   irr::core::vector3df position_, orientation_;
+  irr::scene::ICameraSceneNode* sceneNode_;
 public:
-  Camera();
+  Camera(irr::scene::ICameraSceneNode* node = 0);
   void attach(SpaceObject* object);
   void attach(const GUID& guid);
   void detach();
-  const int& getDistance() const;
+  const int getDistance() const;
+  void setSceneNode(irr::scene::ICameraSceneNode* node);
+  irr::scene::ICameraSceneNode* getSceneNode();
   void setDistance(const int& distance);
   const irr::core::vector3df& getPosition() const;
   void setPosition(const irr::core::vector3df& position);

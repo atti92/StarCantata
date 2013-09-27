@@ -6,13 +6,13 @@
 
 class GuidGenerator{
 private:
-  static GUID nextGuid_;
-  static array<GUID> nextGuids_;
+  static irr::core::array<GUID> nextGuid_;
 public:
   GuidGenerator();
   ~GuidGenerator();
   void init();
-  static GUID generateGuid();
+  static GUID generateGuid(Guid_High type);
 };
+
 
 #endif // GUIDGENERATOR_H

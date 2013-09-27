@@ -6,17 +6,14 @@ using namespace core;
 IrrlichtGfx::IrrlichtGfx()
 {
   frameTime_ = 0;
-  lastUpdatedTime_ = getTime();
+  lastUpdatedTime_ = 0;
 }
 
 u32 IrrlichtGfx::drawAll (Map *map)
 {
   map->updateAll ();
-}
-
-u32 IrrlichtGfx::drawAll (u16 mapId)
-{
-  getObjectMgr ()->getMap (mapId)->updateAll ();
+  scenemgr_->drawAll ();
+  guienv_->drawAll ();
 }
 
 Camera* IrrlichtGfx::getCamera ()
@@ -42,12 +39,12 @@ u32 IrrlichtGfx::getFrameTime ()
 void IrrlichtGfx::updateTimer ()
 {
   frameTime_ = getTime() - lastUpdatedTime_;
-  lastUpdatedTime_ = getTime();
+  lastUpdatedTime_ += frameTime_;
 }
 
 void IrrlichtGfx::initIrrlicht ()
 {
   IrrlichtCore::initIrrlicht ();
-  camera_ = scenemgr_->addCameraSceneNode();
-  camera_->setFOV(irr::core::PI/5.0f);
+  camera_->setSceneNode (scenemgr_->addCameraSceneNode());
+  camera_->getSceneNode()->setFOV(irr::core::PI/5.0f);
 }

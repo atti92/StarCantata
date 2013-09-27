@@ -4,7 +4,17 @@
 
 using namespace irr;
 using namespace core;
+using namespace video;
 
+MapLoader::MapLoader()
+{
+
+}
+
+MapLoader::~MapLoader ()
+{
+
+}
 
 void MapLoader::load (io::path path)
 {
@@ -28,11 +38,11 @@ void MapLoader::addChild(SpaceObject* parent, pugi::xml_node parentnode)
             vector3df(node.attribute("x").as_float(),
                       node.attribute("y").as_float(),
                       node.attribute("z").as_float()
-             ),
+                      ),
             vector3df(node.attribute("rotx").as_float(),
                       node.attribute("roty").as_float(),
                       node.attribute("rotz").as_float()
-             ),
+                      ),
             SColorf(node.attribute("colR").as_float(),
                     node.attribute("colG").as_float(),
                     node.attribute("colB").as_float()),

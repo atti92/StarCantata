@@ -3,6 +3,17 @@
 
 using namespace irr;
 
+u32 Loader::nLoaded = 0;
+
+Loader::Loader()
+{
+
+}
+
+Loader::~Loader ()
+{
+
+}
 
 void Loader::load (io::path path)
 {

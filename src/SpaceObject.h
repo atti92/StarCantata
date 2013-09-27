@@ -25,11 +25,12 @@ protected:
   irr::f32 mass_;
   SpaceObject *parent_;
   GUID guid_;
+  Map* currentMap_;
   irr::scene::IAnimatedMeshSceneNode* sceneNode_;
 public:
   SpaceObject(irr::scene::IAnimatedMeshSceneNode* node = 0);
-  GUID getGUID();
-  void setGUID(GUID guid);
+  const GUID& getGUID() const;
+  void setGUID(const GUID& guid);
 
   Map* getMap();
   void setMap(Map* map);
@@ -37,35 +38,35 @@ public:
   void setSceneNode(irr::scene::IAnimatedMeshSceneNode* node);
   irr::scene::IAnimatedMeshSceneNode* getSceneNode();
 
-  irr::core::vector3df getPosition();
-  void setPosition(irr::core::vector3df pos);
-  irr::core::vector3df getOrientation();
-  void setOrientation(irr::core::vector3df orientation);
-  irr::core::vector3df getMovementSpeed();
-  void setMovementSpeed(irr::core::vector3df movementSpeed);
-  irr::core::vector3df getRotationSpeed();
-  void setRotationSpeed(irr::core::vector3df rotationSpeed);
-  irr::f32 getMass();
-  void setMass(irr::f32 mass);
-  irr::core::vector3df getPositionRelative(SpaceObject* parent);
-  void setPositionRelative(irr::core::vector3df pos, SpaceObject* parent);
+  const irr::core::vector3df getPosition() const;
+  void setPosition(const irr::core::vector3df& pos);
+  const irr::core::vector3df getOrientation() const;
+  void setOrientation(const irr::core::vector3df& orientation);
+  const irr::core::vector3df& getMovementSpeed() const;
+  void setMovementSpeed(const irr::core::vector3df& movementSpeed);
+  const irr::core::vector3df& getRotationSpeed() const;
+  void setRotationSpeed(const irr::core::vector3df& rotationSpeed);
+  const irr::f32 getMovementSpeedAbs() const;
+  void setMovementSpeedAbs(const irr::f32& speedValue);
+  const irr::f32 getRotationSpeedAbs() const;
+  void setRotationSpeedAbs(const irr::f32& speedValue);
 
+  const irr::f32& getMass() const;
+  void setMass(const irr::f32& mass);
+  const irr::core::vector3df getPositionRelative(const SpaceObject* parent) const;
+  void setPositionRelative(const irr::core::vector3df& pos, const SpaceObject* parent);
 
-  irr::f32 getMovementSpeedAbs();
-  void setMovementSpeedAbs(irr::f32 speedValue);
-  irr::f32 getRotationSpeedAbs();
-  void setRotationSpeedAbs(irr::f32 speedValue);
-
-  void turn(irr::f32 radian);
+  void turn(const irr::f32& radian);
   virtual void control();
-  virtual void setOrbit(SpaceObject *parent = 0, const irr::f32 semiMajorAxis = 0, const irr::f32 fociDistance = 0, const irr::f32 initOrientation = 0);
+  virtual void setOrbit(SpaceObject *parent = 0, const irr::f32& semiMajorAxis = 0, const irr::f32& fociDistance = 0, const irr::f32& initOrientation = 0);
 
 
-  static const irr::core::vector3df rotToMovVector(const irr::core::vector3df rotation)
+  static const irr::core::vector3df rotToMovVector(const irr::core::vector3df& rotation)
   {
-    return irr::core::vector3df(sin(rotation.Y*irr::core::PI/180), 0, cos(rotation.Y*irr::core::PI/180));
+    return irr::core::vector3df(sin(rotation.Y*irr::core::PI/180), 0,
+                                cos(rotation.Y*irr::core::PI/180));
   }
-  static SpaceObjectType strToSpaceObject(irr::core::stringc arg);
+  static const SpaceObjectType strToSpaceObject(const irr::core::stringc& arg);
 };
 
 #endif

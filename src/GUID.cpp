@@ -2,68 +2,84 @@
 
 using namespace irr;
 
-GUID::GUID(u64 num)
+GUID::GUID(const u64 num, Guid_High type)
 {
-  guid_ = 0;
-  for (int i = 0; i < 7; ++i) {
-    guid_ += static_cast<u8>(num >> (i * 8));
+  guid_ = core::array<u8>(8);
+  for (int i = 0; i < 4; ++i) {
+    this->guid_[i] = static_cast<u8>(static_cast<u32>(0xFF << (i * 8)) & num);
+  }
+  for (int i = 4; i < 8; ++i) {
+    this->guid_[i] = static_cast<u8>(static_cast<u32>(0xFF << ((i - 4) * 8)) & type);
   }
 }
 
-u32 GUID::getHigh ()
+GUID::GUID(const GUID &theOther)
 {
-  u32 temp = guid_[4] + (guid_[5] << 8) + (guid_[6] << 16) + (guid_[7] << 24);
-  return temp;
+  for (int i = 0; i < 7; ++i) {
+    guid_[i] = theOther.getByte (i);
+  }
 }
 
-u32 GUID::getLow ()
+u32 GUID::getHigh () const
 {
-  u32 temp = guid_[0] + (guid_[1] << 8) + (guid_[2] << 16) + (guid_[3] << 24);
-  return temp;
+  return static_cast<u32>(guid_[4] + (guid_[5] << 8) + (guid_[6] << 16) + (guid_[7] << 24));
 }
 
-u8 GUID::getByte (u8 id)
+u32 GUID::getLow () const
+{
+  return static_cast<u32>(guid_[0] + (guid_[1] << 8) + (guid_[2] << 16) + (guid_[3] << 24));
+}
+
+const u8& GUID::getByte (const u8 &id) const
 {
   if(id > 7)
-    return 0;
+    return guid_[id % 8];
   return guid_[id];
 }
 
-u8 GUID::operator [] (u8 id)
+u8& GUID::operator [] (const u8& id)
 {
   if(id > 7)
     return guid_[0];
   return guid_[id];
 }
 
-GUID::operator u64()
+GUID::operator u64() const
 {
-  u64 temp = getHigh() << 32 + getLow();
+  return static_cast<u64>(((u64)getHigh() << 32) + getLow());
+}
+
+GUID GUID::operator + (const GUID& num)
+{
+  GUID temp;
+  u16 sum = 0;
+  u8 remain = 0;
+  for (int i = 0; i < 7; ++i) {
+    sum = this->getByte(i) + num.getByte(i) + remain;  //add digits and the previous digits remainder
+    remain = sum / 256;   //new remainder
+    temp[i] = sum % 256;      //new digit
+  }
   return temp;
 }
 
-GUID& GUID::operator + (u64 num)
+GUID& GUID::operator =(const GUID& num)
 {
-  u64 temp = static_cast<u64>guid_ + num;
-  for (int i = 0; i < 7; ++i) {
-    guid_[i] = static_cast<u8>(temp >> (i * 8));
+  if(this != &num)
+  {
+    for (int i = 0; i < 7; ++i) {
+      this->guid_[i] = num.getByte (i);
+    }
   }
+  return *this;
 }
 
-GUID& GUID::operator + (s64 num)
+GUID& GUID::operator +=(const GUID& num)
 {
-  u64 temp = static_cast<u64>guid_ + num;
-  for (int i = 0; i < 7; ++i) {
-    guid_[i] = static_cast<u8>(temp >> (i * 8));
-  }
+  *this = *this + num;
+  return *this;
 }
 
-GUID& GUID::operator + (GUID num)
+void GUID::set(const u64 &num)
 {
-  guid_ += static_cast<u64>(num);
-}
-
-void GUID::set(u64 num)
-{
-  guid_ = num;
+  *this = num;
 }

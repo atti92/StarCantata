@@ -24,14 +24,16 @@ void Camera::setRotateSpeed(const irr::f32& rotateSpeed)
 {
   rotateSpeed_ = rotateSpeed;
 }
-Camera::Camera()
+Camera::Camera(scene::ICameraSceneNode *node)
 {
+  sceneNode_ = node;
   reset(true);
 }
 
 void Camera::attach(SpaceObject* object)
 {
   target_ = object;
+  sceneNode_->setParent (target_->getSceneNode ());
 }
 
 void Camera::attach(const GUID& guid)
@@ -43,6 +45,7 @@ void Camera::attach(const GUID& guid)
 void Camera::detach()
 {
   target_ = 0;
+  sceneNode_->setParent (0);
 }
 
 void Camera::setDistance(const int &distance)
@@ -50,14 +53,25 @@ void Camera::setDistance(const int &distance)
   position_.Z = static_cast<float>(distance);
 }
 
-const int& Camera::getDistance() const
+const int Camera::getDistance() const
 {
   return position_.Z;
+}
+
+scene::ICameraSceneNode* Camera::getSceneNode ()
+{
+  return sceneNode_;
+}
+
+void Camera::setSceneNode (scene::ICameraSceneNode *node)
+{
+  sceneNode_ = node;
 }
 
 void Camera::setPosition(const vector3df &position)
 {
   position_ = position;
+  sceneNode_->setPosition (position);
 }
 
 const vector3df& Camera::getPosition() const
