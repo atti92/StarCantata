@@ -7,7 +7,7 @@ User* Globals::user_ = 0;
 
 Globals::Globals()
 {
-  init();
+
 }
 
 Globals::~Globals ()
@@ -17,8 +17,12 @@ Globals::~Globals ()
 
 void Globals::init ()
 {
+  srand ((unsigned int)time(NULL) );
   if(this->irrlichtGfx_ == 0)
+  {
     this->irrlichtGfx_ = new IrrlichtGfx();
+    irrlichtGfx_->initIrrlicht ();
+  }
   if(this->user_ == 0)
     this->user_ = new User();
 }

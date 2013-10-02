@@ -46,9 +46,9 @@ public:
   void setMovementSpeed(const irr::core::vector3df& movementSpeed);
   const irr::core::vector3df& getRotationSpeed() const;
   void setRotationSpeed(const irr::core::vector3df& rotationSpeed);
-  const irr::f32 getMovementSpeedAbs() const;
+  irr::f32 getMovementSpeedAbs() const;
   void setMovementSpeedAbs(const irr::f32& speedValue);
-  const irr::f32 getRotationSpeedAbs() const;
+  irr::f32 getRotationSpeedAbs() const;
   void setRotationSpeedAbs(const irr::f32& speedValue);
 
   const irr::f32& getMass() const;
@@ -63,10 +63,11 @@ public:
 
   static const irr::core::vector3df rotToMovVector(const irr::core::vector3df& rotation)
   {
-    return irr::core::vector3df(sin(rotation.Y*irr::core::PI/180), 0,
+    return irr::core::vector3df(sin(rotation.Y*irr::core::PI/180),
+                                0,
                                 cos(rotation.Y*irr::core::PI/180));
   }
-  static const SpaceObjectType strToSpaceObject(const irr::core::stringc& arg);
+  static SpaceObjectType strToSpaceObject(const irr::core::stringc& arg);
 };
 
 #endif

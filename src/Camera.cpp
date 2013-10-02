@@ -33,7 +33,6 @@ Camera::Camera(scene::ICameraSceneNode *node)
 void Camera::attach(SpaceObject* object)
 {
   target_ = object;
-  sceneNode_->setParent (target_->getSceneNode ());
 }
 
 void Camera::attach(const GUID& guid)
@@ -50,12 +49,12 @@ void Camera::detach()
 
 void Camera::setDistance(const int &distance)
 {
-  position_.Z = static_cast<float>(distance);
+  position_.Y = static_cast<float>(distance);
 }
 
-const int Camera::getDistance() const
+int Camera::getDistance() const
 {
-  return position_.Z;
+  return position_.Y;
 }
 
 scene::ICameraSceneNode* Camera::getSceneNode ()
@@ -71,7 +70,6 @@ void Camera::setSceneNode (scene::ICameraSceneNode *node)
 void Camera::setPosition(const vector3df &position)
 {
   position_ = position;
-  sceneNode_->setPosition (position);
 }
 
 const vector3df& Camera::getPosition() const
@@ -111,7 +109,10 @@ const int& Camera::getMinDistance() const
 
 void Camera::move(const vector3df& direction, const u32& frameTime)
 {
-  position_ += direction * movementSpeed_ * frameTime;
+
+  vector3df position = position_ + direction * movementSpeed_ * frameTime;
+  if(position.getLength () <= maxDistance_ && position.getLength () >= minDistance_)
+    setPosition (position);
 }
 
 void Camera::rotate(const vector3df &direction, const u32 &frameTime)
@@ -125,16 +126,19 @@ void Camera::reset(const bool &isFullReset)
   if(isFullReset)
   {
     target_ = 0;
-    position_ = vector3df(0,0,0);
+    if(sceneNode_ != 0)
+      sceneNode_->setPosition (vector3df(0,0,0));
   }
+  position_    = vector3df(0,500,0);
   orientation_ = vector3df(0,0,0);
   minDistance_ = MIN_CAMERA_DIST;
   maxDistance_ = MAX_CAMERA_DIST;
   movementSpeed_ = MOVEMENT_SPEED;
-  rotateSpeed_ = ROTATE_SPEED;
+  rotateSpeed_ = ROTATE_SPEED/100;
 }
 
 void Camera::control()
 {
-  //refresh camera position
+  sceneNode_->setPosition (((target_ != 0) ? target_->getPosition () : vector3df(0,0,0)) + position_);
+  sceneNode_->setTarget ((target_ != 0) ? target_->getPosition () : vector3df(0,0,0));
 }

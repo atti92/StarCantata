@@ -12,6 +12,7 @@ protected:
   SpaceShip* spaceShip_;
 public:
   User();		//Constructor
+  void addSpaceShip(Map* map);
   void assignShip(SpaceShip* spaceShip);
   SpaceShip* getSpaceShip();		//getter for the player's ship reference
   bool isKeyPressed(irr::EKEY_CODE key);

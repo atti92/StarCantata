@@ -26,21 +26,25 @@ int main()
   //srand ((unsigned int)time(NULL) ); //initialize random seed
   Globals globals;
   globals.init();
+
   MapLoader mapLoader;
   mapLoader.load ("maps/testmap.xml");
   Map* baseMap = mapLoader.getMap ();
-  sIGfx->initIrrlicht ();
-  sIGfx->getObjectMgr ()->addMap (baseMap);
+
+  sUser->addSpaceShip (baseMap);
   SpaceShip testShip = SpaceShip(0, vector3df(230,0,0));
   sIGfx->getObjectMgr ()->addObject (&testShip);
-  sUser->assignShip (&testShip);
   sIGfx->getGui ()->createChatWindow ();
   while(sIGfx->getDevice ()->run ())
     {
+    sIGfx->updateTimer ();
+    sUser->manageControls ();
+    sIGfx->getObjectMgr ()->updateAll();
+    sIGfx->getCamera ()->control ();
       sIGfx->getDriver ()->beginScene(true, true, SColor(255,100,101,140));
-      sIGfx->updateTimer ();
+
       sIGfx->drawAll (baseMap);
-      sIGfx->getObjectMgr ()->updateAll();
+
       sIGfx->getDriver ()->endScene ();
     }
 

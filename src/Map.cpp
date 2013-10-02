@@ -61,7 +61,7 @@ void Map::setId (const u16 &id)
 
 SpaceObject* Map::getObject (const GUID &guid)
 {
-  for (SpaceObject** it = objects_.pointer (); (*it) != objects_.getLast (); ++it) {
+  for (SpaceObject** it = objects_.pointer (); it <= &objects_.getLast (); ++it) {
     if((*it)->getGUID () == guid)
       return (*it);
   }
@@ -70,7 +70,7 @@ SpaceObject* Map::getObject (const GUID &guid)
 
 void Map::updateAll ()
 {
-  for (SpaceObject** it = objects_.pointer (); (*it) != objects_.getLast (); ++it) {
+  for (SpaceObject** it = objects_.pointer (); it <= &objects_.getLast (); ++it) {
     (*it)->control ();
   }
 }

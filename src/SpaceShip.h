@@ -3,15 +3,15 @@
 
 #include "SpaceObject.h"		//inherited from Space object
 
-#define SPACESHIP_MESH_PATH "objects/spaceship"
-#define SPACESHIP_TEXTURE_PATH "texture/spaceship"
+#define SPACESHIP_MESH_PATH "objects/spaceship/"
+#define SPACESHIP_TEXTURE_PATH "texture/spaceship/"
 
 enum Direction {
   DIR_NONE = 0,
   DIR_FORWARD = 1,
   DIR_BACKWARD = 2,
-  DIR_CLOCKWISE = 4,
-  DIR_ANTI_CLOCKWISE = 8
+  DIR_ANTI_CLOCKWISE = 4,
+  DIR_CLOCKWISE = 8
 };
 
 class SpaceShip : public SpaceObject
@@ -30,20 +30,20 @@ public:
   void init();
   const irr::f32& getMaxTurnSpeed() const;
   const irr::f32& getMaxTravelSpeed() const;
-  const irr::f32 getBaseThrustValue() const;
-  const irr::f32 getModdedThrustValue() const;
-  const irr::f32 getRealThrustValue() const;   //used in movement
-  const irr::f32 getRealBreakValue() const;
+  irr::f32 getBaseThrustValue() const;
+  irr::f32 getModdedThrustValue() const;
+  irr::f32 getRealThrustValue() const;   //used in movement
+  irr::f32 getRealBreakValue() const;
   const irr::f32& getCurrentEnergy() const;
   const irr::f32& getCurrentHp() const;
   const irr::f32& getMaxEnergy() const;
   const irr::f32& getMaxHp() const;
   void setMaxTurnSpeed(const irr::f32& sp = 1);
   void setMaxTravelSpeed(const irr::f32& sp = 200);
-  const bool isThrusting() const;
-  const bool isBreaking() const;
-  const bool isTurningACW() const;
-  const bool isTurningCW() const;
+  bool isThrusting() const;
+  bool isBreaking() const;
+  bool isTurningACW() const;
+  bool isTurningCW() const;
   void thrust(Direction dir);
   void turn(Direction dir);
   void moveBy(const irr::core::vector3df& speedvector);

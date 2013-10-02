@@ -11,9 +11,11 @@ IrrlichtGfx::IrrlichtGfx()
 
 u32 IrrlichtGfx::drawAll (Map *map)
 {
-  map->updateAll ();
+
   scenemgr_->drawAll ();
   guienv_->drawAll ();
+
+  return 0;
 }
 
 Camera* IrrlichtGfx::getCamera ()
@@ -45,6 +47,8 @@ void IrrlichtGfx::updateTimer ()
 void IrrlichtGfx::initIrrlicht ()
 {
   IrrlichtCore::initIrrlicht ();
-  camera_->setSceneNode (scenemgr_->addCameraSceneNode());
+  objectMgr_ = new ObjectMgr();
+  gui_ = new Gui();
+  camera_ = new Camera(scenemgr_->addCameraSceneNode());
   camera_->getSceneNode()->setFOV(irr::core::PI/5.0f);
 }

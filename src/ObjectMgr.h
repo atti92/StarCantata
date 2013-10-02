@@ -17,6 +17,7 @@ public:
   void updateAll();
   void addMap(Map* map);
   void removeMap(Map* map);
+  void clearMaps();
   void addObject(SpaceObject* object, const irr::u16& mapId = 0);
   void removeObject(SpaceObject* object);
   void removeObject(const GUID& guid);

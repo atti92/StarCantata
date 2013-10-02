@@ -21,7 +21,7 @@ public:
   void attach(SpaceObject* object);
   void attach(const GUID& guid);
   void detach();
-  const int getDistance() const;
+  int getDistance() const;
   void setSceneNode(irr::scene::ICameraSceneNode* node);
   irr::scene::ICameraSceneNode* getSceneNode();
   void setDistance(const int& distance);

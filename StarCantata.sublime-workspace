@@ -8,53 +8,35 @@
 	"buffers":
 	[
 		{
-			"contents": "#include \"Celestial.h\"\n\nCelestial::Celestial():SOB()\n{\n	orbiting = false;\n    obj_path = PATH_BASE_OBJECT;\n    obj_path += PATH_CELESTIAL_OBJECT;\n    default_obj = DEFAULT_CELESTIAL_OBJECT;\n    default_obj += _OBJ;\n}\nCelestial::Celestial(IAnimatedMeshSceneNode* inode):SOB(inode)\n{\n	orbiting = false;\n    obj_path = PATH_BASE_OBJECT;\n    obj_path += PATH_CELESTIAL_OBJECT;\n    default_obj = DEFAULT_CELESTIAL_OBJECT;\n    default_obj += _OBJ;\n}\nCelestial::Celestial(Display& display, const f32 scale, const vector3df pos, const vector3df rot, bool lighting):SOB()\n{\n	orbiting = false;\n    obj_path = PATH_BASE_OBJECT;\n    obj_path += PATH_CELESTIAL_OBJECT;\n    default_obj = DEFAULT_CELESTIAL_OBJECT;\n    default_obj += _OBJ;\n    scene_node = display.smgr->addAnimatedMehSceneNode(display.smgr->getMesh(obj_path+default_obj), 0, -1, pos, rot, vector3df(1,1,1) * scale);\n	scene_node->setMaterialFlag(video::EMF_LIGHTING, lighting);  //other than sun, light should collide with it\n	scene_node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true); //scaled object\n	scene_node->getMaterial(0).AmbientColor.set(255,255,255,255);\n	scene_node->getMaterial(0).DiffuseColor.set(255,0,0,255);\n	scene_node->getMaterial(0).Shininess = 100.0f;\n	scene_node->setMaterialFlag(video::EMF_ANISOTROPIC_FILTER , true);\n}\n\n\nvoid Celestial::setOrbit(SOB *parent, const f32 s_major_a, const f32 foci_dist, const f32 initial_rot)\n{\n	orbiting = true;\n	this->initial_rot = initial_rot;\n	this->parent = parent;\n	this->foci_dist = foci_dist;\n	this->s_major_a = s_major_a;\n	eccentricity = foci_dist/s_major_a;\n    mean_anomaly = 2 * parent->getMass()/1000 * PI / sqrt(s_major_a*s_major_a*s_major_a);   // Speed is dependant on the gravity and the size of the orbit (a*a*a) (Kepler's law)\n}\n\nconst f32 Celestial::eccentricAnomaly(const f32 Mean_time)  //returns the true angle from the circle angle\n{\n	f32 e0, e1;\n	u32 cyc = 0;\n\n	e0 = Mean_time;\n	e1 = e0 - eccentricity * sin(Mean_time) - Mean_time;\n\n	while (abs(e0 - e1) > 0.01 && (cyc < 6)) {   // 0.01 is the precision between the cycles, 6 is the max cycles\n		e1 = e0;\n		e0 -= (e0 - eccentricity * sin(e0) - Mean_time) / (1 - eccentricity * cos(e0));\n		cyc++;\n	}\n	return e0;\n}\n\nvoid Celestial::refresh(const f32 frameTime, const u32 time)\n{\n	if(orbiting)\n		move(frameTime, time);\n	else\n		SOB::move(frameTime, time);\n}\n\nvoid Celestial::move(const f32 frameTime, const u32 time)\n{\n	f32 E = eccentricAnomaly(mean_anomaly * time + initial_rot);\n	f32 X = s_major_a * (cos(E) - eccentricity);\n	f32 Y = s_major_a * sqrt(1 - eccentricity*eccentricity) * sin(E);\n	scene_node->setRotation(scene_node->getRotation() + rot_speed * frameTime);\n	scene_node->setPosition(parent->getPosition() + vector3df(X,0,Y));\n}\n\nPlanet::Planet():Celestial(){}\nPlanet::Planet(IAnimatedMeshSceneNode* inode):Celestial(inode){}\n\nPlanet::Planet(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):Celestial(display, scale, pos, rot)\n{\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_PLANET_TEXTURE;\n    io::path Obj_name = FILE_PLANET_TEXTURE;\n	Obj_name += type;\n    scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );\n}\n\nMoon::Moon():Celestial(){}\nMoon::Moon(IAnimatedMeshSceneNode* inode):Celestial(inode){}\n\nMoon::Moon(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):Celestial(display, scale, pos, rot)\n{\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_MOON_TEXTURE;\n    io::path Obj_name = FILE_MOON_TEXTURE;\n	Obj_name += type;\n    scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );\n}\n\nAsteroid::Asteroid():Celestial(){}\nAsteroid::Asteroid(IAnimatedMeshSceneNode* inode):Celestial(inode){}\nAsteroid::Asteroid(const u32 type, Display& display, const f32 scale, const vector3df pos, const vector3df rot):Celestial()\n{\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_ASTEROID_TEXTURE;\n    obj_path = PATH_BASE_OBJECT;\n    obj_path += PATH_ASTEROID_OBJECT;\n    io::path Obj_name = FILE_ASTEROID_TEXTURE;\n	Obj_name += type;\n\n    scene_node = display.smgr->addAnimatedMeshSceneNode(display.smgr->getMesh(obj_path+Obj_name+_OBJ), 0, -1, pos, rot, vector3df(1,1,1) * scale);\n	scene_node->setMaterialFlag(video::EMF_LIGHTING, true);\n\n    //scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) ); NO TEXTURES YET\n}\n\nSun::Sun():Celestial()\n{\n	lightrange = 0;\n	lightcolor = SColorf(0, 0, 0);\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_STAR_TEXTURE;\n}\nSun::Sun(IAnimatedMeshSceneNode* inode):Celestial(inode)\n{\n	lightrange = 0;\n	lightcolor = SColorf(0, 0, 0);\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_STAR_TEXTURE;\n}\nSun::Sun(u32 type, Display& display, f32 scale, vector3df pos, vector3df rot, SColorf lightcolor, f32 lightrange):Celestial(display, scale, pos, rot, false)\n{\n	this->lightcolor = lightcolor;\n	this->lightrange = lightrange;\n    texture_path = PATH_BASE_TEXTURE;\n    texture_path += PATH_STAR_TEXTURE;\n    io::path Obj_name = FILE_STAR_TEXTURE;\n	Obj_name += type;\n    scene_node->setMaterialTexture( 0, display.driver->getTexture(texture_path+Obj_name+_JPG) );\n	scene_node->setMaterialFlag(video::EMF_LIGHTING, false);  //light will go through it\n	scene_node->setMaterialFlag(video::EMF_NORMALIZE_NORMALS, true); //scaled object\n	video::SLight light_data;\n	light_data.DiffuseColor = video::SColorf(1.0f, 1.0f, 1.0f);\n	light_data.SpecularColor = video::SColorf(0.8f, 0.8f, 0.6f);\n	light_data.CastShadows = true;\n	light_data.Type = video::ELT_POINT;\n	light_data.Attenuation = vector3df(0.0f, 1.f/(lightrange*lightrange), 1.f/(lightrange*lightrange));\n\n	ILightSceneNode* il = display.smgr->addLightSceneNode(0, pos + vector3df(0, 1.f * scale, 0), lightcolor, lightrange);\n	il->setLightData(light_data);\n}\n",
-			"file": "src/Celestial.cpp",
-			"file_size": 6049,
-			"file_write_time": 130237602714383205,
+			"contents": "`timescale 1ns / 1ps\n//////////////////////////////////////////////////////////////////////////////////\n// Company: \n// Engineer: \n// \n// Create Date:    12:06:34 10/01/2013 \n// Design Name: \n// Module Name:    hazi10 \n// Project Name: \n// Target Devices: \n// Tool versions: \n// Description: \n//\n// Dependencies: \n//\n// Revision: \n// Revision 0.01 - File Created\n// Additional Comments: \n//\n//////////////////////////////////////////////////////////////////////////////////\nmodule hazi10(\n    input X,\n    input ce,\n    input clk,\n	 input rst,\n	 input [3:0] n,\n	 input [6:0] y,\n    output Z,\n	 output [3:0] A2\n    );\nreg [3:0] A;\nalways @(posedge clk)\n if(rst)\n  A <= 0;\n else if(ce)\n  begin\n   if(A < (n-1))\n    begin\n	  if(X | A > 0)\n	   A <= A + 1;\n	 end\n	else if(~X)\n	  A <= 0;\n  end\n   \nassign Z = (A==0)?0:y[n-A-1];\nassign A2 = A;\nendmodule\n",
+			"file": "/home/ati/Asztal/Hazi10/hazi10.v",
+			"file_size": 847,
+			"file_write_time": 130251016550052578,
 			"settings":
 			{
-				"buffer_size": 5893,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "#ifndef IRRLICHTGFX_H\n#define IRRLICHTGFX_H\n\n#include \"IrrlichtCore.h\"\n#include \"SOB.h\"\n\nclass IrrlichtGFX : public IrrlichtCore\n{\nprivate:\n    irr::core::array<SOB> objects;\n    //Camera Stuff:\n    IAnimatedMeshSceneNode *cameraTarget;\n    int minCameraDist, maxCameraDist;\n    irr::core::vector3df cameraPosition, cameraOrientation;\npublic:\n    int DrawAll();\n    void AddObject(SOB* object);\n    void DelObject(SOB* object);\n    void DelObject(GUID guid);\n    GUID GetGUID(SOB* object);\n    //Camera Stuff:\n    void CameraAttach(SOB object);\n    void CameraAttach (GUID guid);\n    void CameraDetach();\n    void CameraSetDistance(int dist);\n    void CameraSetPosition(irr::core::vector3df pos);\n    void CameraSetOrientation(irr::core::vector3df o);\n    void CameraSetMaxDist(int dist);\n    void CameraSetMinDist(int dist);\n    int CameraGetMaxDist();\n    int CameraGetMinDist();\n};\n\n#endif // IRRLICHTGFX_H\n",
-			"file": "src/IrrlichtGFX.h",
-			"file_size": 910,
-			"file_write_time": 130238431216335494,
-			"settings":
-			{
-				"buffer_size": 910,
+				"buffer_size": 847,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "#ifndef GUID_H\n#define GUID_H\n#include \"irrlicht.h\"\n\nclass GUID\n{\n    irr::u64 guid;\n    GUID(irr::u64 num = 0);\n    irr::u32 getLow();\n    irr::u32 getHigh();\n    irr::u8 getByte(irr::u8 id);\n    irr::u8 operator [] (irr::u8 id);\n    operator irr::u64();\n};\n\n#endif // GUID_H\n",
-			"file": "src/GUID.h",
-			"file_size": 276,
-			"file_write_time": 130238426971834447,
+			"file": "/home/ati/Asztal/Hazi10/hazi10test.v",
 			"settings":
 			{
-				"buffer_size": 277,
+				"buffer_size": 1230,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Gui.h",
-			"settings":
-			{
-				"buffer_size": 305,
-				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 376.0,
+		"height": 306.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
 			[
 				"pc",
 				"Package Control: Install Package"
@@ -85,6 +67,10 @@
 	},
 	"file_history":
 	[
+		"/home/ati/Asztal/Xilinx Ise.sh",
+		"/home/ati/Dokumentumok/StarCantata/src/Celestial.cpp",
+		"/home/ati/Dokumentumok/StarCantata/src/IrrlichtGFX.h",
+		"/home/ati/Dokumentumok/StarCantata/src/GUID.h",
 		"/home/ati/.gitconfig",
 		"/home/ati/Dokumentumok/StarCantata/.git/COMMIT_EDITMSG",
 		"/home/ati/Dokumentumok/StarCantata/.gitignore",
@@ -131,123 +117,60 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/Celestial.cpp",
+					"file": "/home/ati/Asztal/Hazi10/hazi10.v",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5893,
+						"buffer_size": 847,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								713,
-								713
-							],
-							[
-								742,
-								742
-							],
-							[
-								748,
-								748
+								846,
+								846
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 104.0,
+						"translation.y": 192.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/IrrlichtGFX.h",
+					"file": "/home/ati/Asztal/Hazi10/hazi10test.v",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 910,
+						"buffer_size": 1230,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								849,
-								849
+								1078,
+								1078
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Verilog/Verilog.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/GUID.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								255,
-								255
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Gui.h",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 305,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 764.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -306,11 +229,11 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{

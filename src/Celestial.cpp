@@ -52,7 +52,7 @@ void CelestialObject::setOrbit(SpaceObject *parent, const f32 s_major_a, const f
   meanAnomaly_ = 2 * parent->getMass()/1000 * PI / sqrt(s_major_a*s_major_a*s_major_a);   // Speed is dependant on the gravity and the size of the orbit (a*a*a) (Kepler's law)
 }
 
-const f32 CelestialObject::eccentricAnomaly(const f32 Mean_time)  //returns the true angle from the circle angle
+f32 CelestialObject::eccentricAnomaly(const f32 Mean_time)  //returns the true angle from the circle angle
 {
   f32 e0, e1;
   u32 cyc = 0;
@@ -76,7 +76,7 @@ void CelestialObject::control()
     f32 X = semiMajorAxis_ * (cos(E) - eccentricity_);
     f32 Y = semiMajorAxis_ * sqrt(1 - eccentricity_ * eccentricity_) * sin(E);
     sceneNode_->setRotation(sceneNode_->getRotation() + rotationSpeed_ * sIGfx->getFrameTime ());
-    sceneNode_->setPosition(parent_->getPosition() + vector3df(X,0,Y));
+    sceneNode_->setPosition(parent_->getPosition() + vector3df(X,Y,0));
   }
   else
     SpaceObject::control();
@@ -164,6 +164,6 @@ Sun::Sun(u32 type, f32 scale, vector3df pos, vector3df rot, SColorf lightcolor, 
         0.0f, 1.f/(lightrange*lightrange), 1.f/(lightrange*lightrange));
 
   ILightSceneNode* il = sIGfx->getSceneManager ()->addLightSceneNode(
-        0, pos + vector3df(0, 1.f * scale, 0), lightcolor, lightrange);
+        0, pos + vector3df(0, 0, 1.f * scale), lightcolor, lightrange);
   il->setLightData(light_data);
 }

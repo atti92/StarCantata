@@ -93,7 +93,7 @@ void SpaceObject::setRotationSpeed (const vector3df &rotationSpeed)
   this->rotationSpeed_ = rotationSpeed;
 }
 
-const f32 SpaceObject::getMovementSpeedAbs () const
+f32 SpaceObject::getMovementSpeedAbs () const
 {
   return this->movementSpeed_.getLength ();
 }
@@ -103,7 +103,7 @@ void SpaceObject::setMovementSpeedAbs (const f32 &speedValue)
   this->movementSpeed_.setLength (speedValue);
 }
 
-const f32 SpaceObject::getRotationSpeedAbs () const
+f32 SpaceObject::getRotationSpeedAbs () const
 {
   return this->rotationSpeed_.getLength ();
 }
@@ -160,7 +160,7 @@ void SpaceObject::setOrbit (SpaceObject *parent, const f32 &semiMajorAxis, const
   parent_ = parent;
 }
 
-const SpaceObjectType SpaceObject::strToSpaceObject (const stringc& arg)
+SpaceObjectType SpaceObject::strToSpaceObject (const stringc& arg)
 {
   if(arg.equals_ignore_case("star"))
     return SOB_SUN;

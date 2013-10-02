@@ -6,13 +6,17 @@ using namespace irr;
 using namespace core;
 using namespace scene;
 
-//NEED COMPLETE REWRITE, move keys to MyEventReceiver.cpp
 
 User::User()
 {
+  spaceShip_ = 0;
+}
+
+void User::addSpaceShip (Map* map)
+{
   SpaceShip* ship = new SpaceShip(0, vector3df(100, 0, 100));
   assignShip (ship);
-  sIGfx->getObjectMgr ()->addObject (ship);
+  map->addObject (ship);
 }
 
 void User::assignShip (SpaceShip *spaceShip)
@@ -39,11 +43,11 @@ void User::manageControls ()
     case GUI_NONE:
       if(isKeyPressed(irr::KEY_SUBTRACT))
       {
-        sIGfx->getCamera ()->move (vector3df(0, 0, -1), frameTime);
+        sIGfx->getCamera ()->move (vector3df(0, -1, 0), frameTime);
       }
       else if(isKeyPressed (irr::KEY_ADD))
       {
-        sIGfx->getCamera ()->move (vector3df(0, 0, 1), frameTime);
+        sIGfx->getCamera ()->move (vector3df(0, 1, 0), frameTime);
       }
       if(isKeyPressed (irr::KEY_DIVIDE))
       {
