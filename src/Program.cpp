@@ -28,27 +28,27 @@ int main()
   globals.init();
 
   MapLoader mapLoader;
-  mapLoader.load ("maps/testmap.xml");
-  Map* baseMap = mapLoader.getMap ();
+  mapLoader.load("maps/testmap.xml");
+  Map* baseMap = mapLoader.getMap();
 
-  sUser->addSpaceShip (baseMap);
+  sUser->addSpaceShip(baseMap);
   SpaceShip testShip = SpaceShip(0, vector3df(230,0,0));
-  sIGfx->getObjectMgr ()->addObject (&testShip);
-  sIGfx->getGui ()->createChatWindow ();
-  while(sIGfx->getDevice ()->run ())
+  sIGfx->getObjectMgr()->addObject(&testShip);
+  sIGfx->getGui()->createChatWindow();
+  while (sIGfx->getDevice()->run())
     {
-    sIGfx->updateTimer ();
-    sUser->manageControls ();
-    sIGfx->getObjectMgr ()->updateAll();
-    sIGfx->getCamera ()->control ();
-      sIGfx->getDriver ()->beginScene(true, true, SColor(255,100,101,140));
+      sIGfx->updateTimer();
+      sUser->manageControls();
+      sIGfx->getObjectMgr()->updateAll();
+      sIGfx->getCamera()->control();
+      sIGfx->getDriver()->beginScene(true, true, SColor(255,100,101,140));
 
-      sIGfx->drawAll (baseMap);
+      sIGfx->drawAll(baseMap);
 
-      sIGfx->getDriver ()->endScene ();
+      sIGfx->getDriver()->endScene();
     }
 
-  sIGfx->getDevice ()->drop ();
+  sIGfx->getDevice()->drop();
 
 
   return 0;

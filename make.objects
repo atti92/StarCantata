@@ -1,13 +1,20 @@
-SRC = $(SRCD)/XMLhandler.o \
-		$(SRCD)/User.o \
-		$(SRCD)/SOB.o \
-		$(SRCD)/Program.o \
-		$(SRCD)/Gui.o \
-		$(SRCD)/Display.o \
-		$(SRCD)/Controls.o \
-		$(SRCD)/Commands.o \
-		$(SRCD)/Celestial.o \
-		$(SRCD)/Camera.o \
-		$(SRCD)/SpaceShip.o 
+SRC=$(SRCD)/Program.o \
+$(SRCD)/User.o \
+$(SRCD)/Gui.o \
+$(SRCD)/GUID.o \
+$(SRCD)/GuidGenerator.o \
+$(SRCD)/IrrlichtCore.o \
+$(SRCD)/IrrlichtGfx.o \
+$(SRCD)/Loader.o \
+$(SRCD)/Map.o \
+$(SRCD)/MapLoader.o \
+$(SRCD)/MyEventReceiver.o \
+$(SRCD)/ObjectMgr.o \
+$(SRCD)/SpaceObject.o \
+$(SRCD)/Globals.o \
+$(SRCD)/Commands.o \
+$(SRCD)/Celestial.o \
+$(SRCD)/Camera.o \
+$(SRCD)/SpaceShip.o 
 
-XML = $(XMLD)/pugixml.o
+XML=$(XMLD)/pugixml.o

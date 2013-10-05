@@ -38,3 +38,6 @@ dependencies/irrlicht/lib/
 StarCantata.layout
 StarCantata.pro.user.0ac6827
 *.pro.user.*
+#ignore the sublime text 2 files
+.tags
+*.sublime-*

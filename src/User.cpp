@@ -43,11 +43,11 @@ void User::manageControls ()
     case GUI_NONE:
       if(isKeyPressed(irr::KEY_SUBTRACT))
       {
-        sIGfx->getCamera ()->move (vector3df(0, -1, 0), frameTime);
+        sIGfx->getCamera ()->move (vector3df(0, 1, 0), frameTime);
       }
       else if(isKeyPressed (irr::KEY_ADD))
       {
-        sIGfx->getCamera ()->move (vector3df(0, 1, 0), frameTime);
+        sIGfx->getCamera ()->move (vector3df(0, -1, 0), frameTime);
       }
       if(isKeyPressed (irr::KEY_DIVIDE))
       {
