@@ -1,17 +1,17 @@
 ﻿<solsys name="Test System">
-	<sun name="Test Star" x="100" y="-20" z="300" scale="30" mass="100" type="0" colR="1" colG="0" colB="0" lightrange="500" rotspy="0.1">
-		<planet name="Test Planet" scale="10" mass="1" maja="200" foci="100" type="0" rotspy="0.1" phase="3.14" orbit="true">
+	<star name="Test Star" x="100" y="-20" z="300" scale="30" mass="100" type="0" colR="1" colG="0" colB="0" lightrange="500" rotspy="0.1">
+		<planet name="Test Planet" scale="10" mass="1" maja="300" centerx="0" centery="0" centerz="100" type="0" rotspy="0.1" phase="3.14" orbit="true">
 			<moon name="Test Moon" scale="2" mass="0.1" maja="50" type="0" orbit="true"/>
 			<moon name="Test Moon 2" scale="1" mass="0.02" maja="80" type="0" orbit="true"/>
 		</planet>
-		<planet name="Test Planet 2" scale="13" mass="2" maja="500" foci="100" type="0" rotspy="0.1" phase="2.14" orbit="true">
+		<planet name="Test Planet 2" scale="13" mass="2" maja="300" centerx="0" centery="000" centerz="-200" type="0" rotspy="0.1" phase="2.14" orbit="true">
 			<moon name="Test Moon" scale="2" mass="0.1" maja="100" type="0" orbit="true"/>
 		</planet>
-		<planet name="Test Planet 3" scale="20" mass="10" maja="700" foci="200" type="0" rotspy="0.1" phase="3" orbit="true">
+		<planet name="Test Planet 3" scale="20" mass="10" maja="500" centerx="100" centery="0" centerz="0" type="0" rotspy="0.1" phase="3" orbit="true">
 			<moon name="Test Moon 2" scale="1" mass="0.02" maja="150" type="0" orbit="true"/>
 		</planet>
-		<planet name="Test Planet 4" scale="25" mass="15" maja="1200" foci="400" type="0" rotspy="0.1" phase="1.14" orbit="true">
+		<planet name="Test Planet 4" scale="25" mass="15" maja="400" centerx="-100" centery="0" centerz="0" type="0" rotspy="0.1" phase="1.14" orbit="true">
 		</planet>
-	</sun>
+	</star>
 </solsys>
 

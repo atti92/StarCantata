@@ -27,10 +27,10 @@ void MapLoader::load (io::path path)
 
 void MapLoader::addChild(SpaceObject* parent, pugi::xml_node parentnode)
 {
-  for (pugi::xml_node node = parentnode.first_child(); node; node = node.next_sibling())
+  for (pugi::xml_node node = parentnode.first_child(); node != 0; node = node.next_sibling())
   {
     SpaceObject* newObj = 0;
-    if(strcmp(node.name(),"sun") == 0)
+    if(strcmp(node.name(),"star") == 0)
     {
       newObj = new Sun(
             node.attribute("type").as_int(),
@@ -90,7 +90,9 @@ void MapLoader::addChild(SpaceObject* parent, pugi::xml_node parentnode)
       {
         newObj->setOrbit(parent,
                          node.attribute("maja").as_float(),
-                         node.attribute("foci").as_float(),
+                         vector3df(node.attribute ("centerx").as_float (),
+                                   node.attribute ("centery").as_float (),
+                                   node.attribute ("centerz").as_float ()),
                          node.attribute("phase").as_float());
       }
       newObj->setRotationSpeed(

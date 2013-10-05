@@ -58,7 +58,7 @@ public:
 
   void turn(const irr::f32& radian);
   virtual void control();
-  virtual void setOrbit(SpaceObject *parent = 0, const irr::f32& semiMajorAxis = 0, const irr::f32& fociDistance = 0, const irr::f32& initOrientation = 0);
+  virtual void setOrbit(SpaceObject *parent, const irr::f32 semiMajorAxis, const irr::core::vector3df orbitCenter, const irr::f32 pitch = 0, const irr::f32 initialOrientation = 0);
 
 
   static const irr::core::vector3df rotToMovVector(const irr::core::vector3df& rotation)

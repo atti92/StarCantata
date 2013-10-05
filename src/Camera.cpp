@@ -139,6 +139,7 @@ void Camera::reset(const bool &isFullReset)
 
 void Camera::control()
 {
+  //sceneNode_ ->setPosition (position_);
   sceneNode_->setPosition (((target_ != 0) ? target_->getPosition () : vector3df(0,0,0)) + position_);
   sceneNode_->setTarget ((target_ != 0) ? target_->getPosition () : vector3df(0,0,0));
 }

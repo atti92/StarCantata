@@ -41,15 +41,16 @@ CelestialObject::CelestialObject(const f32 scale, const vector3df pos, const vec
 }
 
 
-void CelestialObject::setOrbit(SpaceObject *parent, const f32 s_major_a, const f32 foci_dist, const f32 initial_rot)
+void CelestialObject::setOrbit(SpaceObject *parent, const f32 semiMajorAxis, const vector3df orbitCenter, const f32 pitch, const f32 initialOrientation)
 {
   isOrbiting_ = true;
-  initialOrientation_ = initial_rot;
+  initialOrientation_ = initialOrientation;
+  orbitCenter_ = orbitCenter;
   parent_ = parent;
-  fociDistance_ = foci_dist;
-  semiMajorAxis_ = s_major_a;
-  eccentricity_ = foci_dist/s_major_a;
-  meanAnomaly_ = 2 * parent->getMass()/1000 * PI / sqrt(s_major_a*s_major_a*s_major_a);   // Speed is dependant on the gravity and the size of the orbit (a*a*a) (Kepler's law)
+  fociDistance_ = orbitCenter.getLength ();
+  semiMajorAxis_ = semiMajorAxis;
+  eccentricity_ = fociDistance_/semiMajorAxis;
+  meanAnomaly_ = 2 * parent->getMass()/1000 * PI / sqrt(semiMajorAxis*semiMajorAxis*semiMajorAxis);   // Speed is dependant on the gravity and the size of the orbit (a*a*a) (Kepler's law)
 }
 
 f32 CelestialObject::eccentricAnomaly(const f32 Mean_time)  //returns the true angle from the circle angle
@@ -70,13 +71,20 @@ f32 CelestialObject::eccentricAnomaly(const f32 Mean_time)  //returns the true a
 
 void CelestialObject::control()
 {
+  sceneNode_->setRotation(sceneNode_->getRotation() + rotationSpeed_ * sIGfx->getFrameTime ());
   if(isOrbiting_)
   {
     f32 E = eccentricAnomaly(meanAnomaly_ * sIGfx->getTime () + initialOrientation_);
     f32 X = semiMajorAxis_ * (cos(E) - eccentricity_);
-    f32 Y = semiMajorAxis_ * sqrt(1 - eccentricity_ * eccentricity_) * sin(E);
-    sceneNode_->setRotation(sceneNode_->getRotation() + rotationSpeed_ * sIGfx->getFrameTime ());
-    sceneNode_->setPosition(parent_->getPosition() + vector3df(X,Y,0));
+    f32 Z = semiMajorAxis_ * sqrt(1 - eccentricity_ * eccentricity_) * sin(E);
+    vector3df orbitPos = vector3df(0,0,0);
+    vector3df normalizedCenter = vector3df(0,0,1);
+    if(orbitCenter_.getLength () > 0)
+      normalizedCenter = orbitCenter_.normalize ();
+    orbitPos.X = normalizedCenter.X * Z + normalizedCenter.Z * X;
+    orbitPos.Y = 0;
+    orbitPos.Z = normalizedCenter.X * (-X) + normalizedCenter.Z * Z;
+    sceneNode_->setPosition(parent_->getPosition() + orbitPos);
   }
   else
     SpaceObject::control();
@@ -94,6 +102,7 @@ Planet::Planet(const u32 type, const f32 scale, const vector3df pos, const vecto
   Obj_name += type;
   sceneNode_->setMaterialTexture( 0, sIGfx->getDriver()->getTexture(texturePath_+Obj_name+_JPG) );
 }
+
 
 Moon::Moon():CelestialObject(){}
 Moon::Moon(IAnimatedMeshSceneNode* inode):CelestialObject(inode){}

@@ -41,11 +41,12 @@ protected:
   irr::io::path defaultMesh_;
   irr::f32 initialOrientation_;
   bool isOrbiting_;
+  irr::core::vector3df orbitCenter_;
 public:
   CelestialObject();
   CelestialObject(irr::scene::IAnimatedMeshSceneNode* inode);
   CelestialObject(irr::f32 scale, const irr::core::vector3df pos, const irr::core::vector3df rot, bool lighting = true);
-  void setOrbit(SpaceObject *parent, const irr::f32 semiMajorAxis, const irr::f32 fociDistance, const irr::f32 initialOrientation = 0);
+  void setOrbit(SpaceObject *parent, const irr::f32 semiMajorAxis, const irr::core::vector3df orbitCenter, const irr::f32 pitch = 0, const irr::f32 initialOrientation = 0);
   virtual void control();
   irr::f32 eccentricAnomaly(const irr::f32 meanTime);  //returns the true angle from the circle angle
 };

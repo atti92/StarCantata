@@ -105,7 +105,7 @@ const f32& SpaceShip::getMaxTravelSpeed() const
 
 f32 SpaceShip::getBaseThrustValue() const
 {
-  return 100;     //will be the engine's value
+  return 0.01;     //will be the engine's value
 }
 
 f32 SpaceShip::getModdedThrustValue() const

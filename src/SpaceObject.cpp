@@ -155,9 +155,8 @@ void SpaceObject::control(){
                this->getMovementSpeed () * frameTime);
 }
 
-void SpaceObject::setOrbit (SpaceObject *parent, const f32 &semiMajorAxis, const f32 &fociDistance, const f32 &initOrientation)
+void SpaceObject::setOrbit (SpaceObject *parent, const f32 semiMajorAxis, const vector3df orbitCenter, const f32 pitch, const f32 initialOrientation)
 {
-  parent_ = parent;
 }
 
 SpaceObjectType SpaceObject::strToSpaceObject (const stringc& arg)
