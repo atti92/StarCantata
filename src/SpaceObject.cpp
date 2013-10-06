@@ -148,7 +148,7 @@ void SpaceObject::turn (const f32 &radian)
 }
 
 void SpaceObject::control(){
-  u32 frameTime = sIGfx->getFrameTime ();
+  f32 frameTime = sIGfx->getFrameTime ();
   setOrientation (this->getOrientation () +
                   this->getRotationSpeed () * frameTime);
   setPosition (this->getPosition () +

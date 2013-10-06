@@ -5,7 +5,7 @@ using namespace core;
 
 IrrlichtGfx::IrrlichtGfx()
 {
-  frameTime_ = 0;
+  frameTime_ = 0.0f;
   lastUpdatedTime_ = 0;
 }
 
@@ -33,15 +33,15 @@ ObjectMgr* IrrlichtGfx::getObjectMgr ()
   return objectMgr_;
 }
 
-u32 IrrlichtGfx::getFrameTime ()
+f32 IrrlichtGfx::getFrameTime ()
 {
   return frameTime_;
 }
 
 void IrrlichtGfx::updateTimer ()
 {
-  frameTime_ = getTime() - lastUpdatedTime_;
-  lastUpdatedTime_ += frameTime_;
+  frameTime_ = static_cast<f32>(getTime() - lastUpdatedTime_);
+  lastUpdatedTime_ += static_cast<u32>(frameTime_);
 }
 
 void IrrlichtGfx::initIrrlicht ()

@@ -13,7 +13,8 @@ private:
   Camera* camera_;
   Gui* gui_;
   ObjectMgr* objectMgr_;
-  irr::u32 frameTime_, lastUpdatedTime_;
+  irr::u32 lastUpdatedTime_;
+  irr::f32 frameTime_;
 public:
   IrrlichtGfx();
   virtual void initIrrlicht();
@@ -21,7 +22,7 @@ public:
   Camera* getCamera();
   Gui* getGui();
   ObjectMgr* getObjectMgr();
-  irr::u32 getFrameTime();
+  irr::f32 getFrameTime();
   void updateTimer();
   ~IrrlichtGfx();
 };

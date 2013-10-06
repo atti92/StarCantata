@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Irrlicht">
+      <UniqueIdentifier>{cc58f4b9-871a-463f-9ffd-7253a457082c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\pugixml">
+      <UniqueIdentifier>{ed47de78-ebfe-432d-b18d-6a9163385fa4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Celestial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Globals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Gui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GUID.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GuidGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IrrlichtCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IrrlichtGfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MapLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MyEventReceiver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjectMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpaceObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpaceShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml\pugixml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Celestial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUID.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GuidGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IrrlichtCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IrrlichtGfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MapLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MyEventReceiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ObjectMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpaceObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpaceShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\aabbox3d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\CDynamicMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\CIndexBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\CMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\coreutil.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\CVertexBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\dimension2d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\driverChoice.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EAttributes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ECullingTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EDebugSceneTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EDeviceTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EDriverFeatures.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EDriverTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EGUIAlignment.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EGUIElementTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EHardwareBufferFlags.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EMaterialFlags.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EMaterialTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EMeshWriterEnums.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EMessageBoxFlags.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EPrimitiveTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ESceneNodeAnimatorTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ESceneNodeTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\EShaderTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ETerrainElements.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\fast_atof.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\heapsort.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAnimatedMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAnimatedMeshMD2.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAnimatedMeshMD3.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAnimatedMeshSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAttributeExchangingObject.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IAttributes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IBillboardSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IBillboardTextSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IBoneSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ICameraSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IColladaMeshWriter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ICursorControl.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IDummyTransformationSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IDynamicMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IEventReceiver.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IFileArchive.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IFileList.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IFileSystem.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGeometryCreator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGPUProgrammingServices.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIButton.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUICheckBox.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIColorSelectDialog.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIComboBox.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIContextMenu.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIEditBox.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIElement.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIElementFactory.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIEnvironment.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIFileOpenDialog.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIFont.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIFontBitmap.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIImage.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIImageList.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIInOutFader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIListBox.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIMeshViewer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIScrollBar.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUISkin.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUISpinBox.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUISpriteBank.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIStaticText.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUITabControl.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUITable.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIToolbar.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUITreeView.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IGUIWindow.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IImage.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IImageLoader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IImageWriter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IIndexBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ILightManager.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ILightSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ILogger.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMaterialRenderer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMaterialRendererServices.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshCache.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshLoader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshManipulator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMeshWriter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IMetaTriangleSelector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IOSOperator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleAffector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleAnimatedMeshSceneNodeEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleAttractionAffector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleBoxEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleCylinderEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleFadeOutAffector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleGravityAffector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleMeshEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleRingEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleRotationAffector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleSphereEmitter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IParticleSystemSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IQ3LevelMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IQ3Shader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IRandomizer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IReadFile.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IReferenceCounted.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrAllocator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrArray.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IrrCompileConfig.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrlicht.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IrrlichtDevice.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrList.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrMap.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrMath.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrpack.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrString.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrTypes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrunpack.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\irrXML.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneCollisionManager.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneLoader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneManager.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeAnimator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeAnimatorCameraFPS.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeAnimatorCameraMaya.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeAnimatorCollisionResponse.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeAnimatorFactory.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneNodeFactory.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISceneUserDataSerializer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IShaderConstantSetCallBack.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IShadowVolumeSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ISkinnedMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ITerrainSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ITextSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ITexture.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ITimer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\ITriangleSelector.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IVertexBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IVideoDriver.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IVideoModeList.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IVolumeLightSceneNode.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IWriteFile.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IXMLReader.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\IXMLWriter.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\Keycodes.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\line2d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\line3d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\matrix4.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\path.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\plane3d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\position2d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\quaternion.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\rect.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\S3DVertex.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SAnimatedMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SceneParameters.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SColor.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SExposedVideoData.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SIrrCreationParameters.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SKeyMap.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SLight.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMaterial.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMaterialLayer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMesh.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMeshBufferLightMap.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SMeshBufferTangents.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SParticle.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SSharedMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SSkinMeshBuffer.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SVertexIndex.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SVertexManipulator.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\SViewFrustum.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\triangle3d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\vector2d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies\irrlicht\include\vector3d.h">
+      <Filter>Header Files\Irrlicht</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugiconfig.hpp">
+      <Filter>Header Files\pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugixml.hpp">
+      <Filter>Header Files\pugixml</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

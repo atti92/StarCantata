@@ -38,8 +38,8 @@ void SpaceShip::init()
 {
   maxEnergy_ = 100;
   maxHitPoints_ = 100;
-  maxTravelSpeed_ = 0.5;
-  maxTurnSpeed_ = 0.1;
+  maxTravelSpeed_ = 0.5f;
+  maxTurnSpeed_ = 0.1f;
   movement_ = 0;
   movementSpeed_ = vector3df(0,0,0);
   rotationSpeed_ = vector3df(0,0,0);
@@ -105,7 +105,7 @@ const f32& SpaceShip::getMaxTravelSpeed() const
 
 f32 SpaceShip::getBaseThrustValue() const
 {
-  return 0.01;     //will be the engine's value
+  return 0.01f;     //will be the engine's value
 }
 
 f32 SpaceShip::getModdedThrustValue() const
@@ -165,29 +165,29 @@ void SpaceShip::turn(Direction dir)
 
 void SpaceShip::control()
 {
-  u32 frameTime = sIGfx->getFrameTime ();
+  f32 frameTime = sIGfx->getFrameTime();
 
   if(isThrusting())
   {
-    movementSpeed_ += rotToMovVector(getOrientation ())*
+    movementSpeed_ += rotToMovVector(getOrientation())*
         frameTime *
         getRealThrustValue();
     if(getMaxTravelSpeed() < movementSpeed_.getLength())
     {
-      setMovementSpeedAbs (getMaxTravelSpeed ());
+      setMovementSpeedAbs (getMaxTravelSpeed());
     }
   }
   if(isBreaking())
   {
-    if((getMovementSpeedAbs () - frameTime * getRealBreakValue ()) < 0)
-      setMovementSpeedAbs (0);
+    if((getMovementSpeedAbs() - frameTime * getRealBreakValue()) < 0)
+      setMovementSpeedAbs(0);
     else
-      setMovementSpeedAbs (getMovementSpeedAbs () - frameTime * getRealBreakValue ());
+      setMovementSpeedAbs (getMovementSpeedAbs() - frameTime * getRealBreakValue());
   }
   if(isTurningACW() || isTurningCW())
   {
-    setOrientation (this->getOrientation () + frameTime * getMaxTurnSpeed () *
-                    vector3df(0, isTurningCW () - isTurningACW (), 0));
+    setOrientation (this->getOrientation() + frameTime * getMaxTurnSpeed() *
+                    vector3df(0.0f, static_cast<f32>(isTurningCW() - isTurningACW()), 0.0f));
   }
   movement_ = 0;   //not sticky
   SpaceObject::control();

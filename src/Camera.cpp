@@ -52,7 +52,7 @@ void Camera::setDistance(const int &distance)
   position_.Y = static_cast<float>(distance);
 }
 
-int Camera::getDistance() const
+f32 Camera::getDistance() const
 {
   return position_.Y;
 }
@@ -107,7 +107,7 @@ const int& Camera::getMinDistance() const
   return minDistance_;
 }
 
-void Camera::move(const vector3df& direction, const u32& frameTime)
+void Camera::move(const vector3df& direction, const f32& frameTime)
 {
 
   vector3df position = position_ + direction * movementSpeed_ * frameTime;
@@ -115,7 +115,7 @@ void Camera::move(const vector3df& direction, const u32& frameTime)
     setPosition (position);
 }
 
-void Camera::rotate(const vector3df &direction, const u32 &frameTime)
+void Camera::rotate(const vector3df &direction, const f32& frameTime)
 {
   orientation_ += direction * frameTime * rotateSpeed_;
   orientation_ = orientation_.normalize ();

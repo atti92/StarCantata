@@ -7,7 +7,7 @@
 #define MIN_CAMERA_DIST 100
 #define MAX_CAMERA_DIST 2000
 #define MOVEMENT_SPEED 1
-#define ROTATE_SPEED 3.14
+#define ROTATE_SPEED 3.14f
 
 
 class Camera{
@@ -21,7 +21,7 @@ public:
   void attach(SpaceObject* object);
   void attach(const GUID& guid);
   void detach();
-  int getDistance() const;
+  irr::f32 getDistance() const;
   void setSceneNode(irr::scene::ICameraSceneNode* node);
   irr::scene::ICameraSceneNode* getSceneNode();
   void setDistance(const int& distance);
@@ -37,8 +37,8 @@ public:
   void setMovementSpeed(const irr::f32& movementSpeed);
   const irr::f32& getRotateSpeed() const;
   void setRotateSpeed(const irr::f32& rotateSpeed);
-  void move(const irr::core::vector3df& direction, const irr::u32& frameTime);
-  void rotate(const irr::core::vector3df& direction, const irr::u32& frameTime);
+  void move(const irr::core::vector3df& direction, const irr::f32& frameTime);
+  void rotate(const irr::core::vector3df& direction, const irr::f32& frameTime);
   void reset(const bool& isFullReset);
   void control();
 };

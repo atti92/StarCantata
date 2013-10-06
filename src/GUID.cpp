@@ -5,11 +5,11 @@ using namespace irr;
 GUID::GUID(const u64 num, Guid_High type)
 {
   guid_ = core::array<u8>(8);
-  for (int i = 0; i < 4; ++i) {
-    this->guid_[i] = static_cast<u8>(static_cast<u32>(0xFF << (i * 8)) & num);
+  for (int i = 7; i >= 4; --i) {
+	  guid_.insert(static_cast<u8>(static_cast<u32>(0xFF << ((i - 4) * 8)) & type));
   }
-  for (int i = 4; i < 8; ++i) {
-    this->guid_[i] = static_cast<u8>(static_cast<u32>(0xFF << ((i - 4) * 8)) & type);
+  for (int i = 3; i >= 0; --i) {
+	  guid_.insert(static_cast<u8>(static_cast<u32>(0xFF << (i * 8)) & num));
   }
 }
 

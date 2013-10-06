@@ -41,3 +41,5 @@ StarCantata.pro.user.0ac6827
 #ignore the sublime text 2 files
 .tags
 *.sublime-*
+StarCantata.sdf
+StarCantata.opensdf

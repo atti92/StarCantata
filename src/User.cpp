@@ -37,7 +37,7 @@ bool User::isKeyPressed (EKEY_CODE key)
 
 void User::manageControls ()
 {
-  u32 frameTime = sIGfx->getFrameTime ();
+  f32 frameTime = sIGfx->getFrameTime ();
   switch (sIGfx->getGui ()->getFocusElementId())
   {
     case GUI_NONE:

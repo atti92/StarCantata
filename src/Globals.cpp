@@ -1,4 +1,5 @@
 #include "Globals.h"
+#include <ctime>
 
 //static member variables:
 
@@ -17,7 +18,8 @@ Globals::~Globals ()
 
 void Globals::init ()
 {
-  srand ((unsigned int)time(NULL) );
+  srand ((unsigned int)time(0) );
+  
   if(this->irrlichtGfx_ == 0)
   {
     this->irrlichtGfx_ = new IrrlichtGfx();

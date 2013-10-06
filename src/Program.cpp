@@ -5,9 +5,12 @@
 #include <iostream>
 #include <fstream>
 
+
 #ifdef _IRR_WINDOWS_
+#ifndef _MSC_VER
 #pragma comment(lib, "Irrlicht.a")
 #pragma comment(linker, "/subsystem:windows /ENTRY:mainCRTStartup")
+#endif
 #endif
 
 
